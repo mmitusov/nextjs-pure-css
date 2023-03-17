@@ -12,6 +12,7 @@ function Header() {
 			<Link href='/text'>Text Lesson</Link>
 			<Link href='/youtubeCopyBasics1'>YouTube Copy Basics 1</Link>
 			<Link href='/youtubeCopyBasics2'>YouTube Copy Basics 2</Link>
+			<Link href='/youtubeCopyBasics3'>YouTube Copy Basics 3</Link>
 		</div>
 	);
 }

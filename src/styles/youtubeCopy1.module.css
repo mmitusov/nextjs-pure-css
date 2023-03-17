@@ -1,3 +1,12 @@
+/* Пример подгрузки шрифтов непосредственно в css (старый способ) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
+
+.videoTitle2 {
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: 22px;
+}
+
 /* ------------------- Image, Input, Elements Display property ------------------- */
 /* Пример 1 - работа с картинками */
 .thumbnail-contain1 {
@@ -21,22 +30,60 @@
 .videoArtist1, .videoStats1 { /* Если мы применяем одинаковый стиль к нескольким елемента одновреленно */
   display: inline-block; /* Меняем дефолтное block поведение <p> тега на inline-block. Теперь текст располагается друг рядом с другом,  а не один под одним */
 }
-
-.thumbnail {
+/* Пример 4 - стиль шире родительского контейнера = overflow */
+.videoTitle1 {
+  font-size: medium;
   width: 300px;
   height: 100%;
 }
 
-.profileIcon {
-  width: 100%;
+.videoContainer1 {
+  display: inline-block; /* Меняем дефолтное block поведение <div> тега на inline-block */
+  vertical-align: top; /* Так как каждый <div> может быть разной высоты, то мы выровняем их все по верхнему краю */
+  width: 300px;
+  margin: 5px;
+}
+
+.thumbnail {
+  width: 300px;
   height: auto;
-  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.videoContainerInside {
+  display: inline-block;
+  width: 250px;
 }
 
 .profileIconConteiner {
   display: inline-block;
-  width: 40px;
+  width: 50px;
   vertical-align: top; /* !Не путать с 'object-position: top;' */
+}
+
+.profileIcon {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.videoTitle {
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: 22px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.videoAuthor, .videoStats {
+  font-size: 14px;
+  color: rgb(96, 96, 96);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.videoAuthor {
+  margin-bottom: 5px;
 }
 
 .searchBar {
@@ -45,23 +92,3 @@
   border-radius: 3px;
   width: 300px;
 }
-
-.videoTitle {
-  font-size: medium;
-  width: 300px;
-  height: 100%;
-}
-
-/* ------------------- WORKING WITH DIV'S AS A CONTAINER ------------------- */
-.videoContainer1 {
-  display: inline-block; /* Меняем дефолтное block поведение <div> тега на inline-block */
-  vertical-align: top; /* Так как каждый <div> может быть разной высоты, то мы выровняем их все по верхнему краю */
-  width: 300px;
-  margin: 5px;
-}
-
-.videoContainerInside {
-  display: inline-block;
-  width: 220px;
-}
-

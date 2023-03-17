@@ -1,9 +1,20 @@
-import thumStyles from '@/styles/youtubeCopy.module.css'
+import thumStyles from '@/styles/youtubeCopy1.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import thumbnail1 from "../../../public/youtube/thumbnails/thumbnail-1.webp"
 import thumbnail2 from "../../../public/youtube/thumbnails/thumbnail-2.webp"
 import chanelIcon1 from "../../../public/youtube/chanelIcons/channel-1.jpeg"
+import chanelIco2 from "../../../public/youtube/chanelIcons/channel-2.jpeg"
+
+// //Из всех способов подгрузить шрифты точечно в конкретный файл, сработал пока только этот. Способ локально в css - указан в css
+// import { Roboto } from '@next/font/google';
+
+// export const robotoLight = Roboto({
+//   subsets: ['latin'],
+//   weight: ['100'],
+// });
+
+// <p className={`${robotoLight.className}`}>
 
 //Даже если мы поменяем <div> Display property на inline-block, то он все равно будет занимать всю ширину контейнера
 //Это происходит так как <div> в inline-block ориентации по дефолту имеет значение ширины в 100%, поэтому нужно не забывать это менять
@@ -16,6 +27,9 @@ import chanelIcon1 from "../../../public/youtube/chanelIcons/channel-1.jpeg"
 //По дефолту когда мы работаем с картинками в css - текст и другие елементы могут залазить на них (because by default img keep their original size), но в NexJS это вроде пока не наблюдалось
 //Но чтобы этого избежать за пределами NexJS то нужно делать ширину картинки одинаковой с шириной родительского тега или 100% от родительского
 //Тогда картинка не будет вылизать за пределы тега и на нее не будут залазить другие елементы
+
+//Если мы указываем несколько стилей шрифтов через запятую, это называется - font stack
+//Мы его используем для того, чтобы если самый первый по списку шрифт не загрузился/не стработал, то автоматически примениться следующий идущий за ним и т.д.
 const YouTubeCopy2 = () => {
     return(
     <>
@@ -27,40 +41,48 @@ const YouTubeCopy2 = () => {
       </Head>
 
       <main>
-        <p> <strong>Using div as a container, nested layout technique/pro technique - lesson</strong> </p>
+        <p> <strong>Using div as a container, nested layout technique/pro technique, fonts - lesson</strong> </p>
         <label>First name:</label>
         <input className={thumStyles.searchBar} type="text" placeholder='Search' />
 
-        <div className={thumStyles.videoContainer1}>          
-            <Image className={thumStyles.thumbnail} src={thumbnail1} alt=''/>
-              <div className={thumStyles.profileIconConteiner} >
-                <Image className={thumStyles.profileIcon} src={chanelIcon1} alt=''/>
-              </div>             
-                      
-              <div className={thumStyles.videoContainerInside}>
-                <p> {/* Пример с <р> тегом *** className={thumStyles.videoTitle} - если вернуть стиль с заданой шириной то будет overflow*/}
-                    Talking Tech <strong>and AI with</strong> Google CEO Sundar Pichai!
-                </p>
-                <p>
-                    Marques Brownlee
-                </p>
-                <p>
-                    3.4M views &#183; 6 months ago
-                </p>
-              </div>         
+        <div className={`${thumStyles.videoContainer1}`}>
+          <Image className={thumStyles.thumbnail} src={thumbnail1} alt=''/>
+          <div>
+            <div className={thumStyles.profileIconConteiner}>
+              <Image className={thumStyles.profileIcon} src={chanelIcon1} alt=''/>
+            </div>                      
+            <div className={thumStyles.videoContainerInside}>
+              <p className={thumStyles.videoTitle}> {/* Пример с <р> тегом *** className={thumStyles.videoTitle1} - если вернуть стиль с заданой шириной то будет overflow*/}
+                  Talking Tech and AI with Google CEO Sundar Pichai!
+              </p>
+              <p className={thumStyles.videoAuthor}>
+                  Marques Brownlee
+              </p>
+              <p className={thumStyles.videoStats}>
+                  3.4M views &#183; 6 months ago
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className={thumStyles.videoContainer1}>
+        <div className={`${thumStyles.videoContainer1}`}>
           <Image className={thumStyles.thumbnail} src={thumbnail2} alt=''/>
-          <p className={thumStyles.videoTitle}>
-              Try Not To Laugh Challenge #9
-          </p>
-          <p className={thumStyles.videoArtist}>
-              Markiplier
-          </p>
-          <p className={thumStyles.videoStats}>
-              19M views &#183; 4 years ago
-          </p>
+          <div>
+            <div className={thumStyles.profileIconConteiner}>
+              <Image className={thumStyles.profileIcon} src={chanelIco2} alt=''/> 
+            </div>
+            <div className={thumStyles.videoContainerInside}>
+              <p className={`${thumStyles.videoTitle}`}>
+                  Try Not To Laugh Challenge #9
+              </p>
+              <p className={thumStyles.videoAuthor}>
+                  Markiplier
+              </p>
+              <p className={thumStyles.videoStats}>
+                  19M views &#183; 4 years ago
+              </p>
+            </div>
+          </div>
         </div>
 
       </main>

@@ -1,4 +1,4 @@
-import thumStyles from '@/styles/youtubeCopy.module.css'
+import thumStyles from '@/styles/youtubeCopy1.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import thumbnail1 from "../../../public/youtube/thumbnails/thumbnail-1.webp" 
