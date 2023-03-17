@@ -1,0 +1,53 @@
+/* basic TEXT styling --------------------------------------------- */
+.sectionDivider {
+  margin: 30px;
+  text-decoration: underline;
+}
+
+/* NextJS: in a CSS module, you can only have selectors that are based on a class or id. So when we just apply to all p tags - it gives us an err*/
+/* p {
+  font-family: Arial;
+} */
+
+/* Стоит заметить, что CSS стили не читаются сверху вниз как в JS, а следуют CSS Specificity правилам. Поэтому очередность написания стилей не имеет значения */
+/* Чем более точечный стиль мы применяем тем выше у него будет приоритет перед другими: body < .body(className) < .body(id) */
+.pTag { /* Чистим код и выносим повторяющееся елементы */
+  font-family: Arial;
+  margin-inline: 0px; /* removing default <p> tag spacing */
+  margin-block: 0px; /* removing default <p> tag spacing */
+}
+
+.spanUnderline {
+  text-decoration: underline;
+}
+.spanUnderline:hover {
+  cursor: pointer;
+}
+
+.chatGptText1 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 40px; /* spacing between text lines */
+  width: 400px; /* ограничиваем длину текста невидимой коробкой */
+  margin-bottom: 7px; /* changing default <p> tag spacing */
+}
+.chatGptText2 {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 30px; 
+}
+.chatGptText3 {
+  font-size: 14px;
+  color: gray;
+}
+
+.apple-text1 {
+  margin-bottom: 5px;
+  color: white;
+  background-color: red;
+  text-align: center;
+  padding-block: 20px;
+  width: 70vh;
+}
+/* -------------------------------------------------------------------------------------------------------------------------- */

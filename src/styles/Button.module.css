@@ -1,0 +1,82 @@
+/* Notes: ":hover", ":active", "opacity", "transition", "box-shadow: 1px 1px 20px rgba()", "border-style", "cursor"*/
+/* padding is the better alternative for height and width properties, so our text don't overflow on the page */
+/* Но когда мы юзаем padding не забываем, что border прибавляется поверх и поэтому размер елемента может стать болеше чем нам это нужно. Для компенсации уменьшим наш padding на толщину border */
+/* "vertical-align: top;" равняет елемент по его верхнему краю */
+
+.sectionDivider {
+  margin: 30px;
+  text-decoration: underline;
+}
+
+.pTag { /* Чистим код и выносим повторяющееся елементы */
+  font-family: Arial;
+  margin-inline: 0px; /* removing default <p> tag spacing */
+  margin-block: 0px; /* removing default <p> tag spacing */
+}
+
+/* basic BUTTONS styling --------------------------------------------- */
+.yt-button {
+  background-color: rgb(209, 0, 0);
+  color: white; /* text color */
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 5px;
+  cursor: pointer;
+  vertical-align: top;
+  transition: opacity 1s;
+}
+/* when hover */
+.yt-button:hover {
+  opacity: 0.7;
+}
+/* when on click */
+.yt-button:active {
+  opacity: 0.4;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.join-button {
+  background-color: white;
+  border-color: blue;
+  border-style: solid;
+  border-width: 1px;
+  color: blue;
+  height: 40px;
+  width: 80px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+  vertical-align: top;
+  transition: background-color 1s, color 1s; /* put as a parametr an element that we want to monitor and then transition duration*/
+}
+.join-button:hover {
+  background-color: blue;
+  color: white;
+}
+.join-button:active {
+  opacity: 0.7;
+}
+
+.tweet-button {
+  background-color: lightskyblue;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  /* height: 35px;
+  width: 80px; - not good with overflowing text, better use padding*/
+  padding-inline: 20px;
+  padding-block: 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  margin: 5px;
+  vertical-align: top;
+  transition: box-shadow 1s;
+}
+.tweet-button:hover {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7); /* shadow parametrs - horizontal shift, vertical shift, blur, color; rgba - last parametr in rgba is the color opacity*/
+}

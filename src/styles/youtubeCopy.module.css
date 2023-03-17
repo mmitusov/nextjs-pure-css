@@ -1,0 +1,67 @@
+/* ------------------- Image, Input, Elements Display property ------------------- */
+/* Пример 1 - работа с картинками */
+.thumbnail-contain1 {
+  width: 300px;
+  height: 300px;
+  object-fit: contain; /* Если мы задаем нестандартные размеры, то вместоо того чтобы плющить или растягивать картинку мы можем использовать object-fit: contain; - чтобы уменьшить картинку в размере пока она не поместиться в наши кастомные размеры */
+  object-position: top;/* object-position работает в тандеме с object-fit, показывает картинку либо вверху либо снузу коробки в пределах которой она уменьшена*/
+  border-style: solid;
+  border-color: black;
+}
+/* Пример 2 - работа с картинками */
+.thumbnail-cover1 {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Если мы задаем нестандартные размеры, то вместоо того чтобы плющить или растягивать картинку мы можем использовать object-fit: cover; - чтобы просто обрезать ее под кастомные размеры */
+  object-position: left; /* object-position работает в тандеме с object-fit, показывает либо левую либо правую обрезаную часть */
+  border-style: solid;
+  border-color: black;
+}
+/* Пример 3 - работа с Display property елементов */
+.videoArtist1, .videoStats1 { /* Если мы применяем одинаковый стиль к нескольким елемента одновреленно */
+  display: inline-block; /* Меняем дефолтное block поведение <p> тега на inline-block. Теперь текст располагается друг рядом с другом,  а не один под одним */
+}
+
+.thumbnail {
+  width: 300px;
+  height: 100%;
+}
+
+.profileIcon {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.profileIconConteiner {
+  display: inline-block;
+  width: 40px;
+  vertical-align: top; /* !Не путать с 'object-position: top;' */
+}
+
+.searchBar {
+  display: block;
+  font-size: medium;
+  border-radius: 3px;
+  width: 300px;
+}
+
+.videoTitle {
+  font-size: medium;
+  width: 300px;
+  height: 100%;
+}
+
+/* ------------------- WORKING WITH DIV'S AS A CONTAINER ------------------- */
+.videoContainer1 {
+  display: inline-block; /* Меняем дефолтное block поведение <div> тега на inline-block */
+  vertical-align: top; /* Так как каждый <div> может быть разной высоты, то мы выровняем их все по верхнему краю */
+  width: 300px;
+  margin: 5px;
+}
+
+.videoContainerInside {
+  display: inline-block;
+  width: 220px;
+}
+

@@ -1,0 +1,5 @@
+.elementSeparation {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
