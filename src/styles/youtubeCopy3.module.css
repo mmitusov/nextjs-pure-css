@@ -1,0 +1,45 @@
+/* ------- CSS Flexbox ------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
+
+.bigGridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+.thumbnail {
+  width: 100%; 
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.gridStyle {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+
+.profileIcon {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.videoTitle {
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: 22px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.videoAuthor, .videoStats {
+  font-size: 14px;
+  color: rgb(96, 96, 96);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.videoAuthor {
+  margin-bottom: 5px;
+}
