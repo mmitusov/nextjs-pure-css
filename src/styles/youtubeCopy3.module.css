@@ -1,6 +1,34 @@
 /* ------- CSS Flexbox ------- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
 
+/* Как можем увидеть мы может использовать space-between с другими динамическими/захардкожеными стилями */
+/* Например применить space-between к: width: 200px, flex: 1/max-width: 500px, width: 200px */
+/* И благодаря этому мы сморли задать максимальною ширину того насколько может растягиваться headerCenter и еще одновременно задать то как будут распологаться елементы по отношению к друг к другу: space-between */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  height: 55px;
+}
+
+.headerLeft {
+  width: 200px;
+  margin-right: 70px;
+  background-color: blue;
+}
+
+.headerCenter {
+  flex: 1; /* Растягивается динамически */
+  max-width: 500px; /* Ограничиваем ширину того на сколько сильно наш центральный елемент может растягиваться */
+  background-color: grey;
+}
+
+.headerRight {
+  width: 200px;
+  margin-left: 35px;
+  background-color: blue;
+}
+
 .bigGridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

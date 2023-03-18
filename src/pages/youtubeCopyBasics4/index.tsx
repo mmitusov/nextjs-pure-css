@@ -20,7 +20,8 @@ import chanelIcon4 from "../../../public/youtube/chanelIcons/channel-4.jpeg"
 
 //GrFlexboxid лексика: 
 //'flex:1', это аналог '1fr' в Grid - займет все оставшиеся свободное место. Если мы успользуем 2 столбца по 1 - место будет разделено медну ними 50/50 (задаем соотношение). Если 1+3, то - 25/75 и т.д.
-//flex-direction: row, width: 100%, flex: 1, justify-content: top/end/space-between/... (горизонтальная центровка), align-items: stretch/top... (вертикальная центровка), column-gap, row-gap,
+//flex-direction: row, width: 100%, flex: 1, justify-content: top/end/space-between/... (горизонтальная центровка), align-items: stretch/top... (вертикальная центровка), column-gap, row-gap
+//Не обязательно каждый раз задавать flex-direction: row, так как flex по дефолту позиционируется как row
 const YouTubeCopy4 = () => {
     return(
     <>
@@ -34,6 +35,18 @@ const YouTubeCopy4 = () => {
       <main>
         <p> <strong>CSS Flexbox - lesson</strong> </p>
         
+        <div className={`${thumStyles.header}`}>
+          <div className={`${thumStyles.headerLeft}`}>
+            left
+          </div>
+          <div className={`${thumStyles.headerCenter}`}>
+            <input placeholder='Search'/>            
+          </div>
+          <div className={`${thumStyles.headerRight}`}>
+            right
+          </div>
+        </div>
+
         <div className={`${thumStyles.bigGridContainer}`}>
           <div>
             <Image className={thumStyles.thumbnail} src={thumbnail1} alt=''/>
