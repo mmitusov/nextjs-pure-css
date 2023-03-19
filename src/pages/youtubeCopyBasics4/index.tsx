@@ -9,10 +9,15 @@ import chanelIcon1 from "../../../public/youtube/chanelIcons/channel-1.jpeg"
 import chanelIcon2 from "../../../public/youtube/chanelIcons/channel-2.jpeg"
 import chanelIcon3 from "../../../public/youtube/chanelIcons/channel-3.jpeg"
 import chanelIcon4 from "../../../public/youtube/chanelIcons/channel-4.jpeg"
+import chanelIcon5 from "../../../public/youtube/chanelIcons/my-channel.jpeg"
 import icon1 from "../../../public/youtube/icons/hamburger-menu.svg"
 import icon2 from "../../../public/youtube/icons/youtube-logo.svg"
 import icon3 from "../../../public/youtube/icons/search.svg"
 import icon4 from "../../../public/youtube/icons/voice-search-icon.svg"
+import icon5 from "../../../public/youtube/icons/upload.svg"
+import icon6 from "../../../public/youtube/icons/youtube-apps.svg"
+import icon7 from "../../../public/youtube/icons/notifications.svg"
+
 
 //Flexbox так же как и Grid решает проблему с 'display: inline-block;'
 //Но в отличии от Grid, используся Flexbox мы не задаем параметры расположения елментов в родительском контейнере
@@ -66,7 +71,10 @@ const YouTubeCopy4 = () => {
             </button>
           </div>
           <div className={`${thumStyles.headerRight1}`}>
-            right
+            <Image className={`${thumStyles.uploadIcon}`} src={icon5} alt=''/>
+            <Image className={`${thumStyles.youtubeAppsIcon}`} src={icon6} alt=''/>
+            <Image className={`${thumStyles.notificationsIcon}`} src={icon7} alt=''/>
+            <Image className={`${thumStyles.userPictureIcon}`} src={chanelIcon5} alt=''/>
           </div>
         </div>
 

@@ -5,7 +5,7 @@
 /* Например применить space-between к: width: 200px, flex: 1/max-width: 500px, width: 200px */
 /* И благодаря этому мы сморли задать максимальною ширину того насколько может растягиваться headerCenter и еще одновременно задать то как будут распологаться елементы по отношению к друг к другу: space-between */
 
-/* ------- Стили для тренировочного хедер, чтобы наглядно видеть, что мы делаем ------- */
+/* -------------- Стили для тренировочного хедер, чтобы наглядно видеть, что мы делаем -------------- */
 .header {
   display: flex;
   flex-direction: row;
@@ -16,7 +16,7 @@
 .headerLeft {
   width: 200px;
   margin-right: 70px;
-  background-color: blue;
+  background-color: lightblue;
 }
 
 .headerCenter {
@@ -28,10 +28,10 @@
 .headerRight {
   width: 200px;
   margin-left: 35px;
-  background-color: blue;
+  background-color: lightblue;
 }
 
-/* ------- Стили для чистового YouTube хедера ------- */
+/* -------------- Стили для чистового YouTube хедера -------------- */
 .header1 {
   display: flex;
   flex-direction: row;
@@ -44,7 +44,6 @@
   align-items: center;
   justify-content: center;
   /* width: 200px; - Ширину можно удалить так как мы хотим не конкретную ширину, а чтобы ширины автоматически подгонялась по размер вложеных картинок */
-  margin-right: 70px;
 }
 
 .headerCenter1 {
@@ -57,8 +56,11 @@
 }
 
 .headerRight1 {
-  width: 200px;
-  margin-left: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 180px; /* Так как контейнер больше иконок мы можем использовать width чтобы менять то, насколько близко иконки находятся друг к другу */
+  margin-right: 20px;
 }
 
 .hamburgerMenu {
@@ -79,8 +81,13 @@
 }
 
 .searchButton {
-  width: 60px;
+  width: 65px;
   height: 40px;
+  background-color: rgb(245, 245, 245);
+  border-width: 1px;
+  border-color: rgb(195, 195, 195);;
+  border-style: solid;
+  margin-left: -1px; /* Если мы хотим чтобы елементы имели общую границу, то мы можем воспользоваться этим трюком */
 }
 
 .searchBar {
@@ -91,7 +98,8 @@
   border-width: 1px;
   border-style: solid;
   border-color: rgb(195, 195, 195);
-  border-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1); /* inset - означает, что мы хотим задать тень внутри елемента, а не снаружи вокруг него */
 }
 
@@ -101,15 +109,42 @@
 }
 
 .voiceSearchIcon {
-
+  width: auto;
+  height: 24px;
+  margin-top: 4px; /* Чтобы не центровать при помощи flex - просто отцентруем вручную */
 }
 
 .voiceSearchIconButton {
   width: 40px;
   height: 40px;
+  margin-left: 8px;
+  border-radius: 50%;
+  border: none; /* Если мы хотим убрать края, а не задавать им ширину */
+  background-color: rgb(245, 245, 245);
 }
 
-/* ------- Прошлые стили ------- */
+.uploadIcon {
+  width: auto;
+  height: 30px;
+}
+
+.youtubeAppsIcon {
+  width: auto;
+  height: 30px;
+}
+
+.notificationsIcon {
+  width: auto;
+  height: 30px;
+}
+
+.userPictureIcon {
+  width: auto;
+  height: 37px;
+  border-radius: 50%;
+}
+
+/* -------------- Прошлые стили -------------- */
 
 .bigGridContainer {
   display: grid;
