@@ -18,7 +18,6 @@ import icon5 from "../../../public/youtube/icons/upload.svg"
 import icon6 from "../../../public/youtube/icons/youtube-apps.svg"
 import icon7 from "../../../public/youtube/icons/notifications.svg"
 
-
 //Flexbox так же как и Grid решает проблему с 'display: inline-block;'
 //Но в отличии от Grid, используся Flexbox мы не задаем параметры расположения елментов в родительском контейнере
 //В родительском контейнере мы только указываем, что это будет Flexbox и его направление - горизонтальное или вертикальное
