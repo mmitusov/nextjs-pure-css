@@ -9,6 +9,10 @@ import chanelIcon1 from "../../../public/youtube/chanelIcons/channel-1.jpeg"
 import chanelIcon2 from "../../../public/youtube/chanelIcons/channel-2.jpeg"
 import chanelIcon3 from "../../../public/youtube/chanelIcons/channel-3.jpeg"
 import chanelIcon4 from "../../../public/youtube/chanelIcons/channel-4.jpeg"
+import icon1 from "../../../public/youtube/icons/hamburger-menu.svg"
+import icon2 from "../../../public/youtube/icons/youtube-logo.svg"
+import icon3 from "../../../public/youtube/icons/search.svg"
+import icon4 from "../../../public/youtube/icons/voice-search-icon.svg"
 
 //Flexbox так же как и Grid решает проблему с 'display: inline-block;'
 //Но в отличии от Grid, используся Flexbox мы не задаем параметры расположения елментов в родительском контейнере
@@ -33,7 +37,7 @@ const YouTubeCopy4 = () => {
       </Head>
 
       <main>
-        <p> <strong>CSS Flexbox - lesson</strong> </p>
+        <p> <strong>CSS Flexbox, Nested Flexbox - lesson</strong> </p>
         
         <div className={`${thumStyles.header}`}>
           <div className={`${thumStyles.headerLeft}`}>
@@ -43,6 +47,25 @@ const YouTubeCopy4 = () => {
             <input placeholder='Search'/>            
           </div>
           <div className={`${thumStyles.headerRight}`}>
+            right
+          </div>
+        </div>
+
+        <div className={`${thumStyles.header1}`}>
+          <div className={`${thumStyles.headerLeft1}`}>
+            <Image className={`${thumStyles.hamburgerMenu}`} src={icon1} alt=''/>
+            <Image className={`${thumStyles.youtubeLogo}`} src={icon2} alt=''/>
+          </div>
+          <div className={`${thumStyles.headerCenter1}`}>
+            <input className={`${thumStyles.searchBar}`} placeholder='Search'/>
+            <button className={`${thumStyles.searchButton}`}>
+              <Image className={`${thumStyles.search}`} src={icon3} alt=''/>
+            </button>
+            <button className={`${thumStyles.voiceSearchIconButton}`}>
+              <Image className={`${thumStyles.voiceSearchIcon}`} src={icon4} alt=''/>
+            </button>
+          </div>
+          <div className={`${thumStyles.headerRight1}`}>
             right
           </div>
         </div>
