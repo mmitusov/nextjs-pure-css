@@ -1,12 +1,48 @@
-/* ------- CSS Flexbox ------- */
+/* ------- CSS Position - fixed ------- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
 
-/* -------------- Стили для чистового YouTube хедера -------------- */
+/* Header */
+/* При использовании 'position: fixed' чтобы фиксированный елемент не залазил на другие елементы мы делаем отступ для вышестоящего елемента на столько, в зависимости сколько мы сделали отступ для самогот fixed (e.g. top: 60px;) */
+/* То есть освобождаем сверху место под Header */
+.pTag {
+  padding-bottom: 80px; /* Можем использовать либо padding, либо margin */
+}
+/* Sidebar */
+/* При использовании 'position: fixed' чтобы фиксированный елемент не залазил на другие елементы мы делаем отступ для вышестоящего елемента на столько, в зависимости сколько мы сделали отступ для самогот fixed (e.g. top: 60px;) */
+/* То есть освобождаем место под боковой Sidebar */
+.mainTag {
+  padding-left: 80px;  /* Можем использовать либо padding, либо margin */
+}
+
+.sidebar1 {
+  position: fixed;
+  top: 115px;
+  bottom: 0;
+  left: 0; 
+  right: 70px; 
+  width: 70px;
+  background-color: grey;
+}
+
+.sidebarLogo1 {
+  
+}
+
 .header1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between; 
-  height: 55px;
+
+  position: fixed;
+  top: 60px;
+  left: 0; /* Растягиваем елемент на всю ширину */
+  right: 0; /* Растягиваем елемент на всю ширину */
+  height: 55px; /* Удобный способ задать статическую ширину, в отличии от динамического подхода - противоположных значений top-bottom*/
+  background-color: white; /* Не забываем указывать background-color, ведь когда наш елемент выходит из document flow он становиться прозрачным */
+
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(240, 240, 240);
 }
 
 .headerLeft1 {
@@ -18,18 +54,18 @@
 .headerCenter1 {
   display: flex;
   align-items: center;
-  flex: 1; /* Растягивается динамически */
-  max-width: 500px; /* Ограничиваем ширину того на сколько сильно наш центральный елемент может растягиваться */
+  flex: 1;
+  max-width: 500px;
   margin-left: 70px;
   margin-right: 35px;
 }
 
 .headerRight1 {
   display: flex;
-  flex-shrink: 0; /* Отключает автоматическую подгонку елементов при их увеличении/именьшьшении - сохраняет расстояние между елементами статическим вне зависимости от размера */
+  flex-shrink: 0; 
   align-items: center;
   justify-content: space-between;
-  width: 180px; /* Так как контейнер больше иконок мы можем использовать width чтобы менять то, насколько близко иконки находятся друг к другу */
+  width: 180px; 
   margin-right: 20px;
 }
 
@@ -47,7 +83,7 @@
 .search {
   width: auto;
   height: 25px;
-  margin-top: 4px; /* Чтобы не центровать при помощи flex - просто отцентруем вручную */
+  margin-top: 4px; 
 }
 
 .searchButton {
@@ -57,32 +93,32 @@
   border-width: 1px;
   border-color: rgb(195, 195, 195);;
   border-style: solid;
-  margin-left: -1px; /* Если мы хотим чтобы елементы имели общую границу, то мы можем воспользоваться этим трюком */
+  margin-left: -1px; 
 }
 
 .searchBar {
   flex: 1;
-  width: 0; /* <input> автоматически имеет default width. Поэтому если мы хотим изменить то насколько наш <input> может сжиматься, мы можем воспользоваться этим параметром */
+  width: 0; 
   height: 36px;
   padding-left: 10px;
-  font-size: 16px; /* Размер шрифта текста который мы уже начали писать внутри placeholder */
+  font-size: 16px; 
   border-width: 1px;
   border-style: solid;
   border-color: rgb(195, 195, 195);
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1); /* inset - означает, что мы хотим задать тень внутри елемента, а не снаружи вокруг него */
+  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1); 
 }
 
 .searchBar::placeholder {
   font-family: 'Roboto';
-  font-size: 16px; /* Размер шрифта самого placeholder */
+  font-size: 16px; 
 }
 
 .voiceSearchIcon {
   width: auto;
   height: 24px;
-  margin-top: 4px; /* Чтобы не центровать при помощи flex - просто отцентруем вручную */
+  margin-top: 4px; 
 }
 
 .voiceSearchIconButton {
@@ -90,7 +126,7 @@
   height: 40px;
   margin-left: 8px;
   border-radius: 50%;
-  border: none; /* Если мы хотим убрать края, а не задавать им ширину */
+  border: none; 
   background-color: rgb(245, 245, 245);
 }
 
