@@ -1,4 +1,4 @@
-import thumStyles from '@/styles/youtubeCopy4.module.css'
+import thumStyles from '@/styles/youtubeCopy5.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import thumbnail1 from "../../../public/youtube/thumbnails/thumbnail-1.webp"
@@ -18,19 +18,7 @@ import icon5 from "../../../public/youtube/icons/upload.svg"
 import icon6 from "../../../public/youtube/icons/youtube-apps.svg"
 import icon7 from "../../../public/youtube/icons/notifications.svg"
 
-//Flexbox так же как и Grid решает проблему с 'display: inline-block;'
-//Но в отличии от Grid, используся Flexbox мы не задаем параметры расположения елментов в родительском контейнере
-//В родительском контейнере мы только указываем, что это будет Flexbox и его направление - горизонтальное или вертикальное
-//А сами параметры расположения елментов мы уже задаем в самих елементах
-//И тем самым Flexbox намного более гибкий в тех случаях когда лейаут и кол-во елементов в контейнере может постоянно меняться
-
-//Работае с Flexbox стоит заметить, что центровка елементов (начало, центр, конец) прописывается не в каждом отдельном елементе, а в родительском елементе и после чего уже применяеться ко всем дочерним
-
-//GrFlexboxid лексика: 
-//'flex:1', это аналог '1fr' в Grid - займет все оставшиеся свободное место. Если мы успользуем 2 столбца по 1 - место будет разделено медну ними 50/50 (задаем соотношение). Если 1+3, то - 25/75 и т.д.
-//flex-direction: row, width: 100%, flex: 1, justify-content: top/end/space-between/... (горизонтальная центровка), align-items: stretch/top... (вертикальная центровка), column-gap, row-gap
-//Не обязательно каждый раз задавать flex-direction: row, так как flex по дефолту позиционируется как row
-const YouTubeCopy4 = () => {
+const YouTubeCopy5 = () => {
     return(
     <>
       <Head>
@@ -41,19 +29,7 @@ const YouTubeCopy4 = () => {
       </Head>
 
       <main>
-        <p> <strong>CSS Flexbox, Nested Flexbox - lesson</strong> </p>
-        
-        <div className={`${thumStyles.header}`}>
-          <div className={`${thumStyles.headerLeft}`}>
-            left
-          </div>
-          <div className={`${thumStyles.headerCenter}`}>
-            <input placeholder='Search'/>            
-          </div>
-          <div className={`${thumStyles.headerRight}`}>
-            right
-          </div>
-        </div>
+        <p> <strong>CSS Position - lesson</strong> </p>
 
         <div className={`${thumStyles.header1}`}>
           <div className={`${thumStyles.headerLeft1}`}>
@@ -80,7 +56,7 @@ const YouTubeCopy4 = () => {
         <div className={`${thumStyles.bigGridContainer}`}>
           <div>
             <Image className={thumStyles.thumbnail} src={thumbnail1} alt=''/>
-            <div className={thumStyles.gridStyle}> {/* Добавили Grid вместо inline-block*/}
+            <div className={thumStyles.gridStyle}>
               <div>
                 <Image className={thumStyles.profileIcon} src={chanelIcon1} alt=''/>
               </div>                      
@@ -163,96 +139,6 @@ const YouTubeCopy4 = () => {
 
 {/* Разные примеры использования Flexbox */}
 
-        {/* <div style="
-          display: flex;
-          flex-direction: row;
-        ">
-          <div style="background-color: lightblue;">div 1 text</div>
-          <div style="background-color: lightpink;">div 2 <p>text</p></div>
-        </div>
-
-        <div style="
-          margin-top: 30px;
-          display: flex;
-          flex-direction: row;
-        ">
-          <div style="
-            background-color: lightblue;
-            width: 100px;
-          ">100px</div>
-          <div style="
-            background-color: lightpink;
-            flex: 1;
-          ">flex: 1</div>
-        </div>
-
-        <div style="
-          margin-top: 30px;
-          display: flex;
-          flex-direction: row;
-        ">
-          <div style="
-            background-color: lightblue;
-            flex: 1;
-          ">flex: 1</div>
-          <div style="
-            background-color: lightpink;
-            width: 100px;
-          ">100px</div>
-          <div style="
-            background-color: lightblue;
-            flex: 2;
-          ">flex: 2</div>
-        </div>
-
-        <div style="
-          margin-top: 30px;
-          height: 70px;
-          border-width: 1px;
-          border-style: solid;
-          border-color: gray;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-        ">
-          <div style="
-            background-color: lightblue;
-            width: 100px;
-          ">100px</div>
-          <div style="
-            background-color: lightpink;
-            width: 100px;
-          ">100px</div>
-          <div style="
-            background-color: lightblue;
-            width: 100px;
-          ">100px</div>
-        </div>
-
-        <div style="
-          margin-top: 30px;
-          height: 70px;
-          border-width: 1px;
-          border-style: solid;
-          border-color: gray;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        ">
-          <div style="
-            background-color: lightblue;
-            width: 100px;
-          ">100px</div>
-          <div style="
-            background-color: lightpink;
-            width: 100px;
-          ">100px</div>
-          <div style="
-            background-color: lightblue;
-            width: 100px;
-          ">100px</div>
-        </div> */}
-
 <p> <strong>Подогнал под Next.js только эту часть</strong> </p>
         <div style={{
           display: 'flex',
@@ -275,4 +161,4 @@ const YouTubeCopy4 = () => {
     )
 }
 
-export default YouTubeCopy4
+export default YouTubeCopy5

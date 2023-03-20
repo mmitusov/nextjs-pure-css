@@ -1,152 +1,5 @@
-/* ------- CSS Flexbox ------- */
+/* ------- CSS Grid ------- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
-
-/* Как можем увидеть мы может использовать space-between с другими динамическими/захардкожеными стилями */
-/* Например применить space-between к: width: 200px, flex: 1/max-width: 500px, width: 200px */
-/* И благодаря этому мы сморли задать максимальною ширину того насколько может растягиваться headerCenter и еще одновременно задать то как будут распологаться елементы по отношению к друг к другу: space-between */
-
-/* -------------- Стили для тренировочного хедер, чтобы наглядно видеть, что мы делаем -------------- */
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; 
-  height: 55px;
-}
-
-.headerLeft {
-  width: 200px;
-  margin-right: 70px;
-  background-color: lightblue;
-}
-
-.headerCenter {
-  flex: 1; /* Растягивается динамически */
-  max-width: 500px; /* Ограничиваем ширину того на сколько сильно наш центральный елемент может растягиваться */
-  background-color: grey;
-}
-
-.headerRight {
-  width: 200px;
-  margin-left: 35px;
-  background-color: lightblue;
-}
-
-/* -------------- Стили для чистового YouTube хедера -------------- */
-.header1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; 
-  height: 55px;
-}
-
-.headerLeft1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* width: 200px; - Ширину можно удалить так как мы хотим не конкретную ширину, а чтобы ширины автоматически подгонялась по размер вложеных картинок */
-}
-
-.headerCenter1 {
-  display: flex;
-  align-items: center;
-  flex: 1; /* Растягивается динамически */
-  max-width: 500px; /* Ограничиваем ширину того на сколько сильно наш центральный елемент может растягиваться */
-  margin-left: 70px;
-  margin-right: 35px;
-}
-
-.headerRight1 {
-  display: flex;
-  flex-shrink: 0; /* Отключает автоматическую подгонку елементов при их увеличении/именьшьшении - сохраняет расстояние между елементами статическим вне зависимости от размера */
-  align-items: center;
-  justify-content: space-between;
-  width: 180px; /* Так как контейнер больше иконок мы можем использовать width чтобы менять то, насколько близко иконки находятся друг к другу */
-  margin-right: 20px;
-}
-
-.hamburgerMenu {
-  width: auto;
-  height: 30px;
-  margin-inline: 20px;
-}
-
-.youtubeLogo {
-  width: auto;
-  height: 30px;
-}
-
-.search {
-  width: auto;
-  height: 25px;
-  margin-top: 4px; /* Чтобы не центровать при помощи flex - просто отцентруем вручную */
-}
-
-.searchButton {
-  width: 65px;
-  height: 40px;
-  background-color: rgb(245, 245, 245);
-  border-width: 1px;
-  border-color: rgb(195, 195, 195);;
-  border-style: solid;
-  margin-left: -1px; /* Если мы хотим чтобы елементы имели общую границу, то мы можем воспользоваться этим трюком */
-}
-
-.searchBar {
-  flex: 1;
-  width: 0; /* <input> автоматически имеет default width. Поэтому если мы хотим изменить то насколько наш <input> может сжиматься, мы можем воспользоваться этим параметром */
-  height: 36px;
-  padding-left: 10px;
-  font-size: 16px; /* Размер шрифта текста который мы уже начали писать внутри placeholder */
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(195, 195, 195);
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1); /* inset - означает, что мы хотим задать тень внутри елемента, а не снаружи вокруг него */
-}
-
-.searchBar::placeholder {
-  font-family: 'Roboto';
-  font-size: 16px; /* Размер шрифта самого placeholder */
-}
-
-.voiceSearchIcon {
-  width: auto;
-  height: 24px;
-  margin-top: 4px; /* Чтобы не центровать при помощи flex - просто отцентруем вручную */
-}
-
-.voiceSearchIconButton {
-  width: 40px;
-  height: 40px;
-  margin-left: 8px;
-  border-radius: 50%;
-  border: none; /* Если мы хотим убрать края, а не задавать им ширину */
-  background-color: rgb(245, 245, 245);
-}
-
-.uploadIcon {
-  width: auto;
-  height: 30px;
-}
-
-.youtubeAppsIcon {
-  width: auto;
-  height: 30px;
-}
-
-.notificationsIcon {
-  width: auto;
-  height: 30px;
-}
-
-.userPictureIcon {
-  width: auto;
-  height: 37px;
-  border-radius: 50%;
-}
-
-/* -------------- Прошлые стили -------------- */
 
 .bigGridContainer {
   display: grid;
@@ -155,6 +8,16 @@
   row-gap: 40px;
 }
 
+/* Using Grid - ширину в 300px лучше удалить так как теперь грид не привязан к конкретной ширине и может динамически менять свои размеры в зависимости от размера екрана */
+/* Также нам не нужны display, vertical-align и margin так как уже Grid задает эти параметры */
+/* .videoContainer {
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  margin: 5px;
+} */
+
+/* Using Grid - вместо ширины в 300px лучше использовать 100%. Так картинка у нас не будет привязана к конкретной ширине и сможет динамически менять свои размеры в зависимости от размера екрана */
 .thumbnail {
   width: 100%; 
   height: auto;
@@ -163,8 +26,20 @@
 
 .gridStyle {
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 50px 1fr; /* Grid лексика: 1fr */
 }
+
+/* После использования Grid в inline-block и ручном задании ширины тегов отпала надобность */
+/* .videoContainerInside {
+  display: inline-block;
+  width: 250px;
+} */
+
+/* .profileIconConteiner {
+  display: inline-block;
+  width: 50px;
+  vertical-align: top;
+} */
 
 .profileIcon {
   width: 40px;
