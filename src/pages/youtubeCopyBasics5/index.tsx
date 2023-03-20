@@ -18,22 +18,27 @@ import icon5 from "../../../public/youtube/icons/upload.svg"
 import icon6 from "../../../public/youtube/icons/youtube-apps.svg"
 import icon7 from "../../../public/youtube/icons/notifications.svg"
 
-//1. Static - дефолтное состояние всех елементов. Означает, что мы просто следуем потоку порядку расположения наших елементов
+//1. Static - дефолтное состояние всех елементов. Означает, что мы просто следуем потоку порядка расположения наших елементов
 //2. Realative - похож на Static, но также позволяет менять top, left, bottom и right параметры, относительно (realative to) его нормального местоположения на странице (его Static положения)
 //И при перемещении елементов с Realative, у нас может возникнуть overflow, так как в этом случае наш елемент как бы выходит из document flow, и не может влиять на другие елементы
 //3. Absolute - полностью уберает елемент из document flow, и страница рендерится так как будто этот елемент и не существует.
 //При чем елемент будет позиционироваться относительно начальных координат позиции своего родителя. 
-//А если и у родителя отсутствует позиционирование (оно = Static), то от позиции родитель-родителя и т.д. до самого <html>. Кстати Absolute часто используется в связке с Realative, как с начальной точкой
+//А если и у родителя отсутствует позиционирование (оно = Static), то от позиции родитель-родителя и т.д. до самого <html>. Кстати Absolute часто используется в связке с Realative, гед Realative служит начальной точкой
 //Имеет свойства: top, left, bottom, right.
 //P.S. Не забываем указывать background-color, ведь когда наш елемент выходит из document flow он становиться прозрачным
 //4. Fixed - как и в Absolute полностью уберает елемент из document flow. Но вот только позиционирование всегда идет от самого <html> игнорируя позиции всех других елементов
-// А елементв всегда остается на экране даже во время пролистывания страницы. 
+// И в отличии от Absolute - елемент всегда остается на экране даже во время пролистывания страницы. 
 //Имеет свойства: top, left, bottom, right. И если мы одновременно задаем противоположные позиции (left-right) - то мы расстягиваем наш елемент между этих позиций
 //Но если не задавать свойства вообще, то елмент просто будет паспологаться поверх своего родителя, а не сразу относительно начальных <html> координат
 //P.S. Не забываем указывать background-color, ведь когда наш елемент выходит из document flow он становиться прозрачным 
 //Sticky = Realative + Fixed.
 //Если мы хотим расположить один елемент поверх другого - для этого нам также нужно использовать CSS Position
 //P.S. Не забываем указывать background-color, ведь когда наш елемент выходит из document flow он становиться прозрачным
+
+//Стоит заметить, что при позиционировании, елементы в самом конце <html> будут отображены на более переднем плане нежели елементы, что идут выше
+//Чтобы влиять на это поведение мы можем использовать праметр - 'z-index'
+//'z-index' determin which element apeears in front and which appear behind. Чем выше 'z-index', тем тем более передний план будут занимать елемент
+//В случае если мы его не указываем, то дефолтное значение 'z-index' = 0.
 
 const YouTubeCopy5 = () => {
   return(
@@ -48,7 +53,7 @@ const YouTubeCopy5 = () => {
     <main className={`${thumStyles.mainTag}`}>
       <p className={`${thumStyles.pTag}`}> <strong>CSS Position - lesson</strong> </p>
 
-      {/* Header */}
+      {/* Header с использованием Fixed */}
       <div className={`${thumStyles.header1}`}>
         <div className={`${thumStyles.headerLeft1}`}>
           <Image className={`${thumStyles.hamburgerMenu}`} src={icon1} alt=''/>
@@ -66,21 +71,28 @@ const YouTubeCopy5 = () => {
         <div className={`${thumStyles.headerRight1}`}>
           <Image className={`${thumStyles.uploadIcon}`} src={icon5} alt=''/>
           <Image className={`${thumStyles.youtubeAppsIcon}`} src={icon6} alt=''/>
-          <Image className={`${thumStyles.notificationsIcon}`} src={icon7} alt=''/>
+          <div className={`${thumStyles.notificationsIconConteiner}`}> {/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */}
+            <Image className={`${thumStyles.notificationsIcon}`} src={icon7} alt=''/>
+            <div className={thumStyles.notificationsCount}>3</div> {/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */}
+          </div>
           <Image className={`${thumStyles.userPictureIcon}`} src={chanelIcon5} alt=''/>
         </div>
       </div>
 
-      {/* Sidebar */}
+      {/* Sidebar с использованием Fixed */}
       <div className={`${thumStyles.sidebar1}`}>
         <div className={`${thumStyles.sidebarLogo1}`}>
           Hey
         </div>
       </div>
 
-      <div className={`${thumStyles.bigGridContainer}`}>
+      {/* Videos */}
+      <div className={`${thumStyles.bigGridContainer}`}> 
         <div>
-          <Image className={thumStyles.thumbnail} src={thumbnail1} alt=''/>
+          <div className={thumStyles.thumbnailContainer}> {/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */}
+            <Image className={thumStyles.thumbnail} src={thumbnail1} alt=''/>
+            <div className={thumStyles.thumbnailTimeStamp}>14:20</div> {/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */}
+          </div>
           <div className={thumStyles.gridStyle}>
             <div>
               <Image className={thumStyles.profileIcon} src={chanelIcon1} alt=''/>
@@ -98,10 +110,12 @@ const YouTubeCopy5 = () => {
             </div>
           </div>
         </div>
-        
-        {/* Videos */}
+
         <div>
-          <Image className={thumStyles.thumbnail} src={thumbnail2} alt=''/>
+          <div className={thumStyles.thumbnailContainer}> {/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */}
+            <Image className={thumStyles.thumbnail} src={thumbnail2} alt=''/>
+            <div className={thumStyles.thumbnailTimeStamp}>8:22</div>  {/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */}
+          </div>
           <div className={thumStyles.gridStyle}>
             <div>
               <Image className={thumStyles.profileIcon} src={chanelIcon2} alt=''/> 
@@ -121,7 +135,10 @@ const YouTubeCopy5 = () => {
         </div>
 
         <div>
-          <Image className={thumStyles.thumbnail} src={thumbnail3} alt=''/>
+          <div className={thumStyles.thumbnailContainer}> {/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */}
+            <Image className={thumStyles.thumbnail} src={thumbnail3} alt=''/>
+            <div className={thumStyles.thumbnailTimeStamp}>22:09</div>  {/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */}
+          </div>
           <div className={thumStyles.gridStyle}>
             <div>
               <Image className={thumStyles.profileIcon} src={chanelIcon3} alt=''/>
@@ -141,7 +158,10 @@ const YouTubeCopy5 = () => {
         </div>
 
         <div>
-          <Image className={thumStyles.thumbnail} src={thumbnail4} alt=''/>
+          <div className={thumStyles.thumbnailContainer}> {/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */}
+            <Image className={thumStyles.thumbnail} src={thumbnail4} alt=''/>
+            <div className={thumStyles.thumbnailTimeStamp}>11:17</div>  {/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */}
+          </div>
           <div className={thumStyles.gridStyle}>
             <div>
               <Image className={thumStyles.profileIcon} src={chanelIcon4} alt=''/> 

@@ -1,5 +1,50 @@
-/* ------- CSS Position - fixed ------- */
+/* ------- CSS Position - Fixed, Absolute, Realative ------- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
+
+/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */
+.thumbnailContainer {
+  position: relative;
+  z-index: 0; /* Помещаем слой под слой header1 */
+}
+/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */
+.thumbnailTimeStamp {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  background-color: black;
+  color: white;
+  padding-inline: 7px;
+  padding-block: 5px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 2px;
+}
+/* Не забываем что для Absolute 'z-index' будет выше чем для Fixed, так как елементы Absolute располагаються ниже елементов Fixed */
+/* Из-за чего возникает еффект что наша Absolute картинка идет выше хедера, а все остальные дефолтные (Staic) елементы видео идут ниже */
+/* Чтобы все выровнять - воспользуемся параметром 'z-index' */
+
+/* Создаем Realative контейнер, просто чтобы отпозиционировать дочерний Absolute */
+.notificationsIconConteiner {
+  position: relative;
+  z-index: 1;
+}
+/* Описываем то как дочерний Absolute будет располагаться внутри контейнера Realative */
+.notificationsCount {
+  position: absolute;
+  top: 2px;
+  right: -5px; /* Если нулевые координаты нас не устраивают - мы можем выйти за их пределы при помощи минусовых значений */
+  background-color: red;
+  color: white;
+  /* width: 20px; */ /* Чтобы сделать значек круглым мы должны сперва задать ему габараиты */
+  /* height: 20px; */ /* Габараиты мы можем задать при помощи width и height */
+  padding-inline: 8px; /* Однако более предпочтительный вариант это padding - так как он автоматически центрует елемент */
+  padding-block: 4px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 50%;
+}
 
 /* Header */
 /* При использовании 'position: fixed' чтобы фиксированный елемент не залазил на другие елементы мы делаем отступ для вышестоящего елемента на столько, в зависимости сколько мы сделали отступ для самогот fixed (e.g. top: 60px;) */
@@ -39,6 +84,8 @@
   right: 0; /* Растягиваем елемент на всю ширину */
   height: 55px; /* Удобный способ задать статическую ширину, в отличии от динамического подхода - противоположных значений top-bottom*/
   background-color: white; /* Не забываем указывать background-color, ведь когда наш елемент выходит из document flow он становиться прозрачным */
+
+  z-index: 1; /* Помещаем слой под слой thumbnailContainer */
 
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -143,6 +190,7 @@
 .notificationsIcon {
   width: auto;
   height: 30px;
+  margin-top: 5px;
 }
 
 .userPictureIcon {
