@@ -187,6 +187,7 @@ const YouTubeCopy5 = () => {
 
 <p> <strong>Подогнал под Next.js только эту часть</strong> </p>
       <div style={{
+        position: 'relative',
         height: '500px',
         marginTop: '30px',
         marginBottom: '100px',
@@ -196,7 +197,7 @@ const YouTubeCopy5 = () => {
         paddingBottom: '40px'
       }}>
         Parent
-        <div style={{position: 'fixed', left: '40px', right: '40px', height: '700px', backgroundColor: 'green'}}>div1</div>
+        <div style={{position: 'absolute', top: '0', left: '40px', right: '40px', backgroundColor: 'green'}}>div1</div>
         <div style={{backgroundColor: 'lightpink', height: '100px'}}>div2</div>
         <div style={{backgroundColor: 'lightblue', height: '100px'}}>div3</div>
       </div>

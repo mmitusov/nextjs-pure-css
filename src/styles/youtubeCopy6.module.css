@@ -1,0 +1,308 @@
+/* ------- CSS Final project ------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
+
+/* Ширину не задаем, так как <div> автоматом отображается на всю ширину */
+.sidebarButton {
+  display: flex;
+  flex-direction: column; /* Для "flex-direction: column;" justify-content и align-items работают задом на перед (реверсивно) */
+  justify-content: center;
+  align-items: center;
+  height: 77px;
+}
+
+.sidebarButton:hover {
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
+}
+
+/* Таргетим все вложенные елементы sidebarButton. В нашем случае все картинки внутри его. И нам не нужно придумывать уникальное имя для класса */
+.sidebarButton img {
+  height: 32px;
+  width: auto;
+  margin-bottom: 5px;
+}
+/* Или мы можем по старинке таргетить картинки напрямую по className */
+/* .sidebarLogo {
+  height: 32px;
+  width: auto;
+} */
+
+.sidebarButton div {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 10px;
+}
+/* OR */
+/* .sidebarText {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 12px;
+} */
+
+.hoverToolTip {
+  position: absolute;
+  background-color: gray;
+  color: white;
+  padding-inline: 5px;
+  padding-block: 5px;
+  border-radius: 3px;
+  font-family: 'Roboto';
+  font-size: 17px;
+  bottom: -60px;
+  opacity: 0; /* Этот трюк используется чтобы отображань нужные нам елементы (например подсказки) только после того как мы с ним начали взаимодействовать */
+  transition: opacity 0.5s;
+  pointer-events: none; /* Чтобы отключить еффект :hover, так как без этого стиля наша подсказка будет загораться как при наведении на searchButton так и hoverToolTip */
+  white-space: nowrap; /* Если текст слишком большой, то этот параметр делает так чтобы он отображался одной длинно строкой, а не слоистой структурой */
+}
+
+/* При наведении на елемент searchButton, мы меняем стили для hoverToolTip елемента */
+.searchButton:hover .hoverToolTip,
+.voiceSearchIconButton:hover .hoverToolTip,
+.uploadButton:hover .hoverToolTip,
+.youtubeAppsButton:hover .hoverToolTip,
+.notificationsIconConteiner:hover .hoverToolTip {
+  opacity: 1; /* Этот трюк используется чтобы отображань нужные нам елементы (например подсказки) только после того как мы с ним начали взаимодействовать */
+}
+
+/* И чтобы появляющиеся окошки всегда были по центру, то применим к родительским помпонентам justify-content: center */
+.searchButton,
+.voiceSearchIconButton,
+.uploadButton,
+.youtubeAppsButton,
+.notificationsIconConteiner {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+.thumbnailContainer {
+  position: relative;
+  z-index: 0;
+}
+
+.thumbnailTimeStamp {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  background-color: black;
+  color: white;
+  padding-inline: 7px;
+  padding-block: 5px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.notificationsIconConteiner {
+  position: relative;
+  z-index: 1;
+}
+
+.notificationsCount {
+  position: absolute;
+  top: 2px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  padding-inline: 8px;
+  padding-block: 4px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 50%;
+}
+
+.mainTag {
+  padding-left: 110px;
+  padding-right: 30px;
+  background-color: rgb(248, 246, 246);
+}
+
+.pTag {
+  padding-bottom: 70px;
+}
+
+.sidebar1 {
+  position: fixed;
+  top: 135px;
+  bottom: 0px;
+  left: 0; 
+  width: 80px;
+  background-color: white;
+  z-index: 3;
+}
+
+.header1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+
+  position: fixed;
+  top: 80px;
+  left: 0; 
+  right: 0;
+  height: 55px;
+  background-color: white;
+
+  z-index: 1;
+
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(240, 240, 240);
+}
+
+.headerLeft1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerCenter1 {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 500px;
+  margin-left: 70px;
+  margin-right: 35px;
+}
+
+.headerRight1 {
+  display: flex;
+  flex-shrink: 0; 
+  align-items: center;
+  justify-content: space-between;
+  width: 180px; 
+  margin-right: 20px;
+}
+
+.hamburgerMenu {
+  width: auto;
+  height: 30px;
+  margin-inline: 20px;
+}
+
+.youtubeLogo {
+  width: auto;
+  height: 30px;
+}
+
+.search {
+  width: auto;
+  height: 25px;
+  margin-top: 4px; 
+}
+
+.searchButton {
+  width: 65px;
+  height: 40px;
+  background-color: rgb(245, 245, 245);
+  border-width: 1px;
+  border-color: rgb(195, 195, 195);;
+  border-style: solid;
+  margin-left: -1px;
+  position: relative; /* Для того чтобы можно было бы использовать вложенный Absolute */
+}
+
+.searchBar {
+  flex: 1;
+  width: 0; 
+  height: 36px;
+  padding-left: 10px;
+  font-size: 16px; 
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(195, 195, 195);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1); 
+}
+
+.searchBar::placeholder {
+  font-family: 'Roboto';
+  font-size: 16px; 
+}
+
+.voiceSearchIcon {
+  width: auto;
+  height: 24px;
+  margin-top: 4px; 
+}
+
+.voiceSearchIconButton {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  border-radius: 50%;
+  border: none; 
+  background-color: rgb(245, 245, 245);
+}
+
+.uploadIcon {
+  width: auto;
+  height: 30px;
+}
+
+.youtubeAppsIcon {
+  width: auto;
+  height: 30px;
+}
+
+.notificationsIcon {
+  width: auto;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.userPictureIcon {
+  width: auto;
+  height: 37px;
+  border-radius: 50%;
+}
+
+/* -------------- Прошлые стили -------------- */
+
+.bigGridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+.thumbnail {
+  width: 100%; 
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.gridStyle {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+
+.profileIcon {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.videoTitle {
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: 22px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.videoAuthor, .videoStats {
+  font-size: 14px;
+  color: rgb(96, 96, 96);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.videoAuthor {
+  margin-bottom: 5px;
+}
