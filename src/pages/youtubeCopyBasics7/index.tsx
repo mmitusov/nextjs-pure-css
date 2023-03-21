@@ -30,6 +30,11 @@ import icon13 from "../../../public/youtube/icons/library.svg"
 //   }
 // }
 
+//CSS Shortcuts
+//We can set paddind for all sides in just one line - padding: vertical-px horisontal-px; || padding: top-px right-px bottom-px left-px;
+//And the same for margin
+//border = border-width + border-style + border-color. e.g. border: 1px solid rgb(195, 195, 195);
+
 const YouTubeCopy7 = () => {
   return(
   <>
