@@ -47,6 +47,7 @@ There are 3 types of elements:
 And in CSS we can use the Display property to switch between them - assign any of the elements to a diferent type (property). 
 
 /* Пример 1 - работа с картинками */
+```
 .thumbnail-contain1 {
   width: 300px;
   height: 300px;
@@ -55,7 +56,10 @@ And in CSS we can use the Display property to switch between them - assign any o
   border-style: solid;
   border-color: black;
 }
+```
+
 /* Пример 2 - работа с картинками */
+```
 .thumbnail-cover1 {
   width: 300px;
   height: 300px;
@@ -64,14 +68,18 @@ And in CSS we can use the Display property to switch between them - assign any o
   border-style: solid;
   border-color: black;
 }
-/* Пример 3 - работа с Display property елементов */
+```
+
+Пример 3 - работа с Display property елементов
+```
 div {
   display: inline-block; /* Меняем дефолтное block поведение <p> тега на inline-block. Теперь текст располагается друг рядом с другом,  а не один под одним */
 }
 vertical-align: top; /* !Не путать с 'object-position: top;' */
+```
 
 # 4. Using div as a container, nested layout technique/pro technique, fonts
-//Из всех способов подгрузить шрифты точечно в конкретный файл, сработал пока только этот.
+Из всех способов подгрузить шрифты точечно в конкретный jsx компонет, сработал пока только этот.
 ```
 import { Roboto } from '@next/font/google';
 
@@ -83,7 +91,10 @@ export const robotoLight = Roboto({
 <p className={`${robotoLight.className}`}>
 ```
 
-Способ локально в css - указан в css
+Из способов подгрузки стилей напрямик в css файл, сработал только пока классический способ с подгрузкой шрифтов
+```
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
+```
 
 Даже если мы поменяем <div> Display property на inline-block, то он все равно будет занимать всю ширину контейнера
 Это происходит так как <div> в inline-block ориентации по дефолту имеет значение ширины в 100%, поэтому нужно не забывать это менять
