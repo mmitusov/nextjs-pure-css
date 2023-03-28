@@ -1,38 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Часто используемые стили:
 
-## Getting Started
+**Примеры обводки**
+.horizontalLine {
+    width: 100%;
+    border-top: 1px solid #4A4A4A;
+OR
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent transparent #4A4A4A transparent;
+}
 
-First, run the development server:
+**Примеры параметров грида**
+grid-template-columns: repeat(4, 246px);
+grid-template-columns: 246px 246px 246px 246px;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**Нужно не забывать что если мы используем absolute, то наш фон становиться прозрачным!** И может сложиться ощущуние, что какой бы порядок z-index мы не задаем, елементы все равно видимы. Но это потому что забыв поставить background-color, прозрачные елементы накладываються друг на друга так, как будто они всегда находяться на одном слое
+position: absolute;
+z-index: 0;
+background-color: white;
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Вложенный css**
+Если например у нас есть елементы разной вложености и каждый из них имеет <p> как дочерний елемент. То используя .style p {} мы будем таргетить все <p> елементы, а не только на одну вложеность вниз. И при попытке менять <p> елементы отдельно на кажной вложености (.style-child1 p {}, .style-child1 p {} ...), у нас будут криво работать стили. Поэтому задавая стили через вложенные елементы нужно быть аккуратным
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# 1. Buttons.
+A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). 
+For example, the pseudo-class :hover can be used to select a button when a user's pointer hovers over the button and this selected button can then be styled.
+Notes: ":hover", ":active", "opacity", "transition" (put as a parametr an element that we want to monitor and then transition duration), "box-shadow: 1px 1px 20px rgba()", "border-style", "cursor
+padding is the better alternative for height and width properties, so our text don't overflow on the page
+Но когда мы юзаем padding не забываем, что border прибавляется поверх и поэтому размер елемента может стать болеше чем нам это нужно. Для компенсации уменьшим наш padding на толщину border
+"vertical-align: top;" равняет елемент по его верхнему краю
+Многие теги например как <p> tag имеют дефолтный spacing параметры. Поэтому для таких елементов подобные параметры нужно не забывать обнулять
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# 2. Text
+Стоит заметить, что CSS стили не читаются сверху вниз как в JS, а следуют CSS Specificity правилам. Поэтому очередность написания стилей не имеет значения
+Чем более точечный стиль мы применяем тем выше у него будет приоритет перед другими: body < .body(className) < .body(id)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<p> тег по дефолту имет мржу 14 px снизу и сверху. Нужно не забывать обнулять маржу
+Символы как '>' лучше создавать при помощи html entity, а то наша среда возможно может спутать его с незакрытым HTML тегом. html entity for middle dot - &#183 
+Подобная стилистическая логика для текста как '<u>' внутри другого тега называется - text element. '<span>' text element в отличии от других не имеет презаданных стилей. Поэтому если мы хотим что-то кастомное, лучше использовать его 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# 3. Image, Input, Elements Display property
+There are 3 types of elements: 
+1. block element - takes up an entire line. e.g. <p> - by default is block element. И даже если мы зададим его внутренему елементу ширину, его маржа все равно будут занимать всю ширину страницы/контейнера в котором находяться
+2. inline-block element - only takes up as much space as needed to. e.g. <img>, <input> - by default are inline-block. Так как они не занимают всю ширину страницу/контейнера в котором находяться, то другие елементы могут распологаться сбоку от них
+3. inline element - appear within a line of text (=text element). e.g. <span>, <strong> - by default are inline.
+And in CSS we can use the Display property to switch between them - assign any of the elements to a diferent type (property). 
 
-## Learn More
+/* Пример 1 - работа с картинками */
+.thumbnail-contain1 {
+  width: 300px;
+  height: 300px;
+  object-fit: contain; /* Если мы задаем нестандартные размеры, то вместоо того чтобы плющить или растягивать картинку мы можем использовать object-fit: contain; - чтобы уменьшить картинку в размере пока она не поместиться в наши кастомные размеры */
+  object-position: top;/* object-position работает в тандеме с object-fit, показывает картинку либо вверху либо снузу коробки в пределах которой она уменьшена*/
+  border-style: solid;
+  border-color: black;
+}
+/* Пример 2 - работа с картинками */
+.thumbnail-cover1 {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Если мы задаем нестандартные размеры, то вместоо того чтобы плющить или растягивать картинку мы можем использовать object-fit: cover; - чтобы просто обрезать ее под кастомные размеры */
+  object-position: left; /* object-position работает в тандеме с object-fit, показывает либо левую либо правую обрезаную часть */
+  border-style: solid;
+  border-color: black;
+}
+/* Пример 3 - работа с Display property елементов */
+div {
+  display: inline-block; /* Меняем дефолтное block поведение <p> тега на inline-block. Теперь текст располагается друг рядом с другом,  а не один под одним */
+}
+vertical-align: top; /* !Не путать с 'object-position: top;' */
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 4. Using div as a container, nested layout technique/pro technique, fonts

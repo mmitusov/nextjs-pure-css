@@ -255,6 +255,11 @@
   row-gap: 40px;
 }
 
+/* .thumbnailContainer {
+  position: relative;
+  z-index: 0;
+} */
+
 .thumbnail {
   width: 100%; 
   height: auto;
