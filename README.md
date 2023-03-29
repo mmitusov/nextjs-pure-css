@@ -20,7 +20,7 @@ z-index: 0;
 background-color: white;
 
 **Вложенный css**
-Если например у нас есть елементы разной вложености и каждый из них имеет <p> как дочерний елемент. То используя .style p {} мы будем таргетить все <p> елементы, а не только на одну вложеность вниз. И при попытке менять <p> елементы отдельно на кажной вложености (.style-child1 p {}, .style-child1 p {} ...), у нас будут криво работать стили. Поэтому задавая стили через вложенные елементы нужно быть аккуратным
+Если например у нас есть елементы разной вложености и каждый из них имеет `<p>` как дочерний елемент. То используя .style p {} мы будем таргетить все `<p>` елементы, а не только на одну вложеность вниз. И при попытке менять `<p>` елементы отдельно на кажной вложености (.style-child1 p {}, .style-child1 p {} ...), у нас будут криво работать стили. Поэтому задавая стили через вложенные елементы нужно быть аккуратным
 
 # 1. Buttons.
 A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). 
@@ -29,21 +29,21 @@ Notes: ":hover", ":active", "opacity", "transition" (put as a parametr an elemen
 padding is the better alternative for height and width properties, so our text don't overflow on the page
 Но когда мы юзаем padding не забываем, что border прибавляется поверх и поэтому размер елемента может стать болеше чем нам это нужно. Для компенсации уменьшим наш padding на толщину border
 "vertical-align: top;" равняет елемент по его верхнему краю
-Многие теги например как <p> tag имеют дефолтный spacing параметры. Поэтому для таких елементов подобные параметры нужно не забывать обнулять
+Многие теги например как `<p>` tag имеют дефолтный spacing параметры. Поэтому для таких елементов подобные параметры нужно не забывать обнулять
 
 # 2. Text
 Стоит заметить, что CSS стили не читаются сверху вниз как в JS, а следуют CSS Specificity правилам. Поэтому очередность написания стилей не имеет значения
-Чем более точечный стиль мы применяем тем выше у него будет приоритет перед другими: body < .body(className) < .body(id)
+Чем более точечный стиль мы применяем тем выше у него будет приоритет перед другими: `body` < `.body(className)` < `.body(id)`
 
-<p> тег по дефолту имет мржу 14 px снизу и сверху. Нужно не забывать обнулять маржу
+`<p>` тег по дефолту имет мржу 14 px снизу и сверху. Нужно не забывать обнулять маржу
 Символы как '>' лучше создавать при помощи html entity, а то наша среда возможно может спутать его с незакрытым HTML тегом. html entity for middle dot - &#183 
-Подобная стилистическая логика для текста как '<u>' внутри другого тега называется - text element. '<span>' text element в отличии от других не имеет презаданных стилей. Поэтому если мы хотим что-то кастомное, лучше использовать его 
+Подобная стилистическая логика для текста как `<u>` внутри другого тега называется - text element. `<span>` text element в отличии от других не имеет презаданных стилей. Поэтому если мы хотим что-то кастомное, лучше использовать его 
 
 # 3. Image, Input, Elements Display property
 There are 3 types of elements: 
-1. block element - takes up an entire line. e.g. <p> - by default is block element. И даже если мы зададим его внутренему елементу ширину, его маржа все равно будут занимать всю ширину страницы/контейнера в котором находяться
-2. inline-block element - only takes up as much space as needed to. e.g. <img>, <input> - by default are inline-block. Так как они не занимают всю ширину страницу/контейнера в котором находяться, то другие елементы могут распологаться сбоку от них
-3. inline element - appear within a line of text (=text element). e.g. <span>, <strong> - by default are inline.
+1. block element - takes up an entire line. e.g.`<p>` - by default is block element. И даже если мы зададим его внутренему елементу ширину, его маржа все равно будут занимать всю ширину страницы/контейнера в котором находяться
+2. inline-block element - only takes up as much space as needed to. e.g. `<img>`, `<input>` - by default are inline-block. Так как они не занимают всю ширину страницу/контейнера в котором находяться, то другие елементы могут распологаться сбоку от них
+3. inline element - appear within a line of text (=text element). e.g. `<span>`, `<strong>` - by default are inline.
 And in CSS we can use the Display property to switch between them - assign any of the elements to a diferent type (property). 
 
 /* Пример 1 - работа с картинками */
@@ -57,7 +57,6 @@ And in CSS we can use the Display property to switch between them - assign any o
   border-color: black;
 }
 ```
-
 /* Пример 2 - работа с картинками */
 ```
 .thumbnail-cover1 {
@@ -69,7 +68,6 @@ And in CSS we can use the Display property to switch between them - assign any o
   border-color: black;
 }
 ```
-
 Пример 3 - работа с Display property елементов
 ```
 div {
@@ -96,8 +94,8 @@ export const robotoLight = Roboto({
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet');
 ```
 
-Даже если мы поменяем <div> Display property на inline-block, то он все равно будет занимать всю ширину контейнера
-Это происходит так как <div> в inline-block ориентации по дефолту имеет значение ширины в 100%, поэтому нужно не забывать это менять
+Даже если мы поменяем `<div>` Display property на inline-block, то он все равно будет занимать всю ширину контейнера
+Это происходит так как `<div>` в inline-block ориентации по дефолту имеет значение ширины в 100%, поэтому нужно не забывать это менять
 
 Стоит заметить, что если во вложеном inline-block <теге> сделать ширину больше его контейнера то он будет вываливаться за его пределы вместе со своим содержимым
 И если подобных контейнеров несколько то рядом их поставить не получиться и они будут идти один под одним, ведь так как он и так вываливается то слева и справа от него места под другие <теги> уже просто не остается
