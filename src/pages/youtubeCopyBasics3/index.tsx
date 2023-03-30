@@ -19,7 +19,7 @@ import chanelIcon4 from "../../../public/youtube/chanelIcons/channel-4.jpeg"
 
 //Grid лексика: 
 //1fr - за  мет все оставшиеся свободное место. Если мы успользуем 2 столбца по 1fr - место будет разделено медну ними 50/50 (задаем соотношение). Если 1fr+3fr, то - 25/75 и т.д.
-//grid-template-columns, column-gap, row-gap,
+//grid-template-columns, column-gap, row-gap
 const YouTubeCopy3 = () => {
     return(
     <>
