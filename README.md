@@ -1,5 +1,26 @@
 # Часто используемые стили:
 
+То как применять центровку елемента к самому себе
+align-self: start/end/center/stretch;
+
+
+**Работа с кнопками в формах**
+```
+<button className={`${buttonAddFileStyle.addButton}`} type="button"> /* Form button by default - type="submit", нужно поменять на type="button" */
+  <input type="file" id="add-file-btn" hidden/>
+  <label htmlFor="add-file-btn">Add file</label>
+</button>
+
+
+.addButton {
+  all: unset; /* Убирает все стили с кнопки */
+  background-color: white;
+  padding: 8px 16px 8px 16px;
+  border: 1px solid  var(--h1-color);
+  cursor: pointer;
+}
+```
+
 **Работа с изображениями**
   object-fit: contain;
   object-position: top;
