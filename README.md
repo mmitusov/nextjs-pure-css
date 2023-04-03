@@ -35,6 +35,24 @@ OR
     border-color: transparent transparent #4A4A4A transparent;
 }
 
+**Работа с изображениями в NextJS**
+Чтобы воспользоваться параметром object-fit, в NextJS, в картинке помио 'className', нужно также обязательно указать параметр 'fill'. Иначе ничего не будет работать
+```
+<div className={`${aboutUsStyles.test}`}>
+    <Image className={`${aboutUsStyles.img1}`} src={aboutUs1} alt='' fill/> /*Обязательно нужно указать fill*/
+</div>
+.parent {
+position: relative; /* Обязательно нужно указывать position, чтобы картинке было на что опереться */
+  width: 875px;
+  height: 213px;
+  margin-bottom: 40px;
+}
+.parent img {
+  object-fit: cover;
+  overflow: hidden;
+}
+```
+
 **Примеры параметров грида**
 grid-template-columns: repeat(4, 246px);
 grid-template-columns: 246px 246px 246px 246px;
