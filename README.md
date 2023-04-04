@@ -84,6 +84,7 @@ padding is the better alternative for height and width properties, so our text d
 Символы как '>' лучше создавать при помощи html entity, а то наша среда возможно может спутать его с незакрытым HTML тегом. html entity for middle dot - &#183 
 Подобная стилистическая логика для текста как `<u>` внутри другого тега называется - text element. `<span>` text element в отличии от других не имеет презаданных стилей. Поэтому если мы хотим что-то кастомное, лучше использовать его 
 
+Чтобы если наш текст не помещается в контейнер, то он просто будет прерываться на краю контейнера с тремя точками на конце
 ```
 .hide-overflow-text {
   white-space: nowrap;
@@ -91,6 +92,7 @@ padding is the better alternative for height and width properties, so our text d
   text-overflow: ellipsis;
 }
 ```
+text-transform: uppercase;
 
 # 3. Image, Input, Elements Display property
 There are 3 types of elements: 
@@ -198,3 +200,20 @@ grid-template-columns, column-gap, row-gap
 # 6. CSS Flexbox, Nested Flexbox
 white-space: nowrap; (для текста, чтобы он не переходил на новую строку)
 flex-wrap: wrap; (если елементы не помещаются по ширине, они будут складываться друг под другом)
+
+
+# 8. Напоминалка для бургер кнопки
+Сдвигает элемент в нужном нам направлении
+transform: translateX(2em);
+transform: translateY(3in);
+transform: translateZ(2px);
+
+Полезно для бургер кнопки
+transform: rotate(45deg);
+transform-origin: 7px 2px;
+
+Применить transition ко всем возможным анимациям
+transition: all 0.3s linear;
+
+Обратиться к первому/второму… на очереди дочернему елементу
+:first-child {}/:nth-child(2)
