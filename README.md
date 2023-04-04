@@ -1,8 +1,8 @@
 # Часто используемые стили:
 
 То как применять центровку елемента к самому себе
-align-self: start/end/center/stretch;
-
+align-self: flex-start/start/end/center/stretch; (no 'display: flex;' needed)
+margin-top: auto;
 
 **Работа с кнопками в формах**
 ```
@@ -10,7 +10,6 @@ align-self: start/end/center/stretch;
   <input type="file" id="add-file-btn" hidden/>
   <label htmlFor="add-file-btn">Add file</label>
 </button>
-
 
 .addButton {
   all: unset; /* Убирает все стили с кнопки */
@@ -84,6 +83,14 @@ padding is the better alternative for height and width properties, so our text d
 `<p>` тег по дефолту имет мржу 14 px снизу и сверху. Нужно не забывать обнулять маржу
 Символы как '>' лучше создавать при помощи html entity, а то наша среда возможно может спутать его с незакрытым HTML тегом. html entity for middle dot - &#183 
 Подобная стилистическая логика для текста как `<u>` внутри другого тега называется - text element. `<span>` text element в отличии от других не имеет презаданных стилей. Поэтому если мы хотим что-то кастомное, лучше использовать его 
+
+```
+.hide-overflow-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
 
 # 3. Image, Input, Elements Display property
 There are 3 types of elements: 
