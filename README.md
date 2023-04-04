@@ -24,6 +24,8 @@ align-self: start/end/center/stretch;
 **Работа с изображениями**
   object-fit: contain;
   object-position: top;
+  width: 100px; - can use for setting up aspect ratio
+  height: calc(100px - 50px); - can use for setting up aspect ratio
 
 **Примеры обводки**
 .horizontalLine {
@@ -36,10 +38,11 @@ OR
 }
 
 **Работа с изображениями в NextJS**
-Чтобы воспользоваться параметром object-fit, в NextJS, в картинке помио 'className', нужно также обязательно указать параметр 'fill'. Иначе ничего не будет работать
+Используя встроенный в NextJS компонет <Image> помимо параметров 'className', в <Image> можно также передавать и опциональные логические пропсы - Optional Props. Ниже будет пример одно из таких пропсов - fill.
+Чтобы воспользоваться параметром object-fit в NextJS, внутри <Image> нужно также обязательно указать параметр 'fill'. Иначе object-fit работать не будет
 ```
 <div className={`${aboutUsStyles.test}`}>
-    <Image className={`${aboutUsStyles.img1}`} src={aboutUs1} alt='' fill/> /*Обязательно нужно указать fill*/
+    <Image src={aboutUs1} alt='' fill/> /*Обязательно нужно указать fill*/
 </div>
 .parent {
 position: relative; /* Обязательно нужно указывать position, чтобы картинке было на что опереться */
@@ -186,3 +189,5 @@ grid-template-columns, column-gap, row-gap
 ```
 
 # 6. CSS Flexbox, Nested Flexbox
+white-space: nowrap; (для текста, чтобы он не переходил на новую строку)
+flex-wrap: wrap; (если елементы не помещаются по ширине, они будут складываться друг под другом)
