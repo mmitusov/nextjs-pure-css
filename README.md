@@ -92,6 +92,16 @@ padding is the better alternative for height and width properties, so our text d
   text-overflow: ellipsis;
 }
 ```
+
+Если текст не вмещается, то чтобы он переносился на новую строчку по словам
+```
+word-break: break-word;
+white-space: normal;
+OR
+overflow-wrap: break-word;
+white-space: normal;
+```
+
 text-transform: uppercase;
 
 # 3. Image, Input, Elements Display property
@@ -217,3 +227,36 @@ transition: all 0.3s linear;
 
 Обратиться к первому/второму… на очереди дочернему елементу
 :first-child {}/:nth-child(2)
+
+Если сложить все елементы в один ряд, то это позволяет тому что не влазит в контейнер скролиться горизонтально
+.horizontalScroll {
+    overflow: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+Так можно менять порядок отображения елементов в пределах одного родителя
+Менять елементы местами
+.imgSectionChild1 div:nth-of-type(1) {
+    order: 2;
+}
+.imgSectionChild1 div:nth-of-type(2) {
+    order: 1;
+}
+
+Менять местами елементы которые являются дочерними родительского
+.imgSection:nth-child(1) .imgBlock1 {
+    order: 2;
+}
+.imgSection:nth-child(1) .imgBlock2 {
+    order: 1;
+}
+
+Менять местами путем изменения их координат
+.imgBlock1, .imgBlock2 {
+    transform: translateY(356px);
+}
+.imgBlock3 {
+    transform: translateY(-221px);
+}
