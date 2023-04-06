@@ -259,4 +259,4 @@ transition: all 0.3s linear;
 }
 .imgBlock3 {
     transform: translateY(-221px);
-}
+} 
