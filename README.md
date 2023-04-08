@@ -102,6 +102,11 @@ overflow-wrap: break-word;
 white-space: normal;
 ```
 
+Шрифты в NextJS
+// import { Inter } from 'next/font/google'
+// const inter = Inter({ subsets: ['latin'] })
+// <p className={inter.className}>
+
 text-transform: uppercase;
 
 # 3. Image, Input, Elements Display property
@@ -213,14 +218,20 @@ flex-wrap: wrap; (если елементы не помещаются по ши�
 
 
 # 8. Напоминалка для бургер кнопки
-Сдвигает элемент в нужном нам направлении
+Сдвигает элемент в нужном нам направлении, и потом можно наложить еффект его выпадания. Полезно для бургер меню
 transform: translateX(2em);
 transform: translateY(3in);
 transform: translateZ(2px);
 
-Полезно для бургер кнопки
-transform: rotate(45deg);
-transform-origin: 7px 2px;
+Полезно для бургер меню кнопки, чтобы лини складывались крестиком
+.burgerDiv1 {
+    transform: rotate(45deg);
+    transform-origin: 7px 2px;
+}
+OR
+.burgerDiv1 {
+  transform: translate(-7px) rotate(45deg) translate(2px);
+}
 
 Применить transition ко всем возможным анимациям
 transition: all 0.3s linear;
@@ -260,3 +271,73 @@ transition: all 0.3s linear;
 .imgBlock3 {
     transform: translateY(-221px);
 } 
+
+***Особенности работы с Googl Maps в NextJS***
+```
+<GoogleMap
+    zoom={15}
+    center={mapPosition}
+    mapContainerClassName={`${contactUsStyles.mapContainer}`} 
+    //OR mapContainerStyle={{ width: '800px', height: '800px' }}. Без указания габаритов карта не отобразиться. Также если задать className, а не mapContainerClassName, то также ничего не отобразиться
+    options={mapConfigOption}
+    onLoad={() => console.log('Map Component Loaded...')}
+>
+    <MarkerF position={mapPosition}/> {/* icon="https://picsum.photos/64" - Пример использования кастомной иконки для карт */}
+</GoogleMap>
+```
+
+***Особенности работы с position Sticky в NextJS***
+```
+function App() {
+    return (
+        <div className={`${ourServicesStyles.parentContainer}`}>
+        <div className={`${ourServicesStyles.leftChild}`}>
+            <h1>Yo</h1>  
+        </div>
+        <div className={`${ourServicesStyles.rightChild}`}>
+            Hello
+        </div>
+        </div>
+    );}
+-----> global.css
+html,
+body {
+  /* overflow-x: hidden; !!! Если использовать overflow, то Sticky не будет в рамках всего приложения*/
+}
+-----> component.css
+.parentContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /*!!! Почему-то если в родительском компоненте не указать 'align-items: flex-start' то Sticky работать не будет*/ 
+}
+.leftChild {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-start;
+}
+.leftChild h1 {
+    width: 50%;
+    height: 300px;
+}
+.rightChild {
+    flex: 1;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+```
+
+***Пример того как создать поведение чтобы если контента на странице слишком мало - чтобы Header и Footer занимали всю высоту страницы, а не схлопывались вместе вверху страницы***
+```
+const Layout = ({ children }) => {
+  return (
+    <div style={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
+      <Header />
+      <div style={{flex: 1}}>{children}</div>
+      <ButtonBackToTop />
+      <Footer />
+    </div>
+  )
+}
+```
