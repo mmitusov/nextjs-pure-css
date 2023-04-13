@@ -301,10 +301,11 @@ function App() {
     );}
 -----> global.css
 Без параметра overflow-x, может сламаться вид всего приложения. Поэтому если мы хотим иметь возможность использовать параметр sticky, то вместо hidden нужно использовать clip. Или вместо overflow воспользоваться contain: paint;
+overflow-x: clip; - https://www.terluinwebdesign.nl/en/css/position-sticky-not-working-try-overflow-clip-not-overflow-hidden/
 html,
 body {
   /* overflow-x: hidden; !!! Если использовать overflow, то Sticky не будет в рамках всего приложения*/
-    overflow-x: clip; || contain: paint;
+    overflow-x: clip; || contain: paint; Но "contain: paint" может давать сайд еффекты, поэтому с ним нужно быть аккуратнее.
 }
 -----> component.css
 .parentContainer {
