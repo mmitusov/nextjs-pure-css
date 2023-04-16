@@ -344,4 +344,3 @@ const Layout = ({ children }) => {
   )
 }
 ```
-
