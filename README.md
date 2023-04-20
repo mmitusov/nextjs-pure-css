@@ -1,8 +1,16 @@
 # Часто используемые стили:
 
 То как применять центровку елемента к самому себе
-align-self: flex-start/start/end/center/stretch; (no 'display: flex;' needed)
+align-self: flex-start/start/end/center/stretch; (родитель должен быть 'display: flex;')
 margin-top: auto;
+
+Чтобы сделать компонет динамически масштабируемым без использования паддингов
+display: flex;
+max-width: 528px;
+width: 100%;
+
+Знак ">" означает что мы обращаемся только к ребенку на корневом уровне, а не вообще всем вложенным 
+.style > div {}
 
 **Работа с кнопками в формах**
 ```
