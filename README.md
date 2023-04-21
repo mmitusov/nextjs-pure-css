@@ -12,6 +12,10 @@ width: 100%;
 Знак ">" означает что мы обращаемся только к ребенку на корневом уровне, а не вообще всем вложенным 
 .style > div {}
 
+Блюр
+backdrop-filter: blur(3px); - блюр бекграунда
+filter: blur(8px); - блюр всего елемента
+
 **Работа с кнопками в формах**
 ```
 <button className={`${buttonAddFileStyle.addButton}`} type="button"> /* Form button by default - type="submit", нужно поменять на type="button" */
