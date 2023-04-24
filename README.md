@@ -62,9 +62,15 @@ position: relative; /* Обязательно нужно указывать posi
   margin-bottom: 40px;
 }
 .parent img {
+  display: flex; /* object-fit может не отработать если не указать - display: flex */
   object-fit: cover;
   overflow: hidden;
 }
+
+
+object-fit: cover;
+overflow: hidden;
+
 ```
 
 **Примеры параметров грида**
@@ -342,6 +348,7 @@ body {
     top: 0;
 }
 ```
+`overflow-y: auto; scrollbar-width: none;` - чтобы отркючить scroll-bar с боку
 
 ***Пример того как создать поведение чтобы если контента на странице слишком мало - чтобы Header и Footer занимали всю высоту страницы, а не схлопывались вместе вверху страницы***
 ```
@@ -356,3 +363,5 @@ const Layout = ({ children }) => {
   )
 }
 ```
+***Conditional CSS rendering***
+<div className={`main-burger-display ${isBurgerOpen ? "" : 'main-burger-hidden'}`} />
