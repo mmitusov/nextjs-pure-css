@@ -26,6 +26,7 @@ filter: blur(8px); - блюр всего елемента
     justify-self: center;
     align-self: center;
 }
+
 **Работа с кнопками в формах**
 ```
 <button className={`${buttonAddFileStyle.addButton}`} type="button"> /* Form button by default - type="submit", нужно поменять на type="button" */
