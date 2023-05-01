@@ -16,6 +16,16 @@ width: 100%;
 backdrop-filter: blur(3px); - блюр бекграунда
 filter: blur(8px); - блюр всего елемента
 
+Нужно разобраться в разнице
+.container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+}
 **Работа с кнопками в формах**
 ```
 <button className={`${buttonAddFileStyle.addButton}`} type="button"> /* Form button by default - type="submit", нужно поменять на type="button" */
@@ -56,21 +66,16 @@ OR
     <Image src={aboutUs1} alt='' fill/> /*Обязательно нужно указать fill*/
 </div>
 .parent {
-position: relative; /* Обязательно нужно указывать position, чтобы картинке было на что опереться */
+  position: relative; /* Обязательно нужно указывать или display или position, чтобы картинке было на что опереться */
+  display: flex; /* object-fit ниже может не отработать если не указать - display: flex в родителе */
   width: 875px;
   height: 213px;
   margin-bottom: 40px;
 }
 .parent img {
-  display: flex; /* object-fit может не отработать если не указать - display: flex */
   object-fit: cover;
   overflow: hidden;
 }
-
-
-object-fit: cover;
-overflow: hidden;
-
 ```
 
 **Примеры параметров грида**
