@@ -1,22 +1,44 @@
 # Часто используемые стили:
 
 То как применять центровку елемента к самому себе
+```
 align-self: flex-start/start/end/center/stretch; (родитель должен быть 'display: flex;')
-margin-top: auto;
+OR margin-top: auto;
+```
 
 Чтобы сделать компонет динамически масштабируемым без использования паддингов
+```
 display: flex;
 max-width: 528px;
 width: 100%;
-
-Знак ">" означает что мы обращаемся только к ребенку на корневом уровне, а не вообще всем вложенным 
-.style > div {}
+```
 
 Блюр
+```
 backdrop-filter: blur(3px); - блюр бекграунда
 filter: blur(8px); - блюр всего елемента
+```
+
+Примеры обводки границ елемента
+```
+.horizontalLine {
+    width: 100%;
+    border-top: 1px solid #4A4A4A;
+OR
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent transparent #4A4A4A transparent;
+}
+```
+
+# Нужно знать:
+***Вложенный css.*** Знак ">" означает что мы обращаемся только к ребенку на корневом уровне, а не вообще ко всем вложенным елементам
+`.style > div {}`
+
+***Вложенный css.*** Если например у нас есть елементы разной вложености и каждый из них имеет `<p>` как дочерний елемент. То используя .style p {} мы будем таргетить все `<p>` елементы, а не только на одну вложеность вниз. И при попытке менять `<p>` елементы отдельно на кажной вложености (.style-child1 p {}, .style-child1 p {} ...), у нас будут криво работать стили. Поэтому задавая стили через вложенные елементы нужно быть аккуратным
 
 Нужно разобраться в разнице
+```
 .container {
     display: flex;
     justify-items: center;
@@ -26,16 +48,19 @@ filter: blur(8px); - блюр всего елемента
     justify-self: center;
     align-self: center;
 }
+```
 
 **Работа с кнопками в формах**
 ```
-<button className={`${buttonAddFileStyle.addButton}`} type="button"> /* Form button by default - type="submit", нужно поменять на type="button" */
+Кастомная кнопка - Add file
+/* Form button by default = type="submit". Дефолтное поведение можно поменять на type="button" */
+<button className={`${buttonAddFileStyle.addButton}`} type="button"> 
   <input type="file" id="add-file-btn" hidden/>
   <label htmlFor="add-file-btn">Add file</label>
 </button>
 
 .addButton {
-  all: unset; /* Убирает все стили с кнопки */
+  all: unset; /* !!! Убирает все стили с кнопки !!! */
   background-color: white;
   padding: 8px 16px 8px 16px;
   border: 1px solid  var(--h1-color);
@@ -44,20 +69,12 @@ filter: blur(8px); - блюр всего елемента
 ```
 
 **Работа с изображениями**
+```
   object-fit: contain;
   object-position: top;
   width: 100px; - can use for setting up aspect ratio
   height: calc(100px - 50px); - can use for setting up aspect ratio
-
-**Примеры обводки**
-.horizontalLine {
-    width: 100%;
-    border-top: 1px solid #4A4A4A;
-OR
-    border-width: 1px;
-    border-style: solid;
-    border-color: transparent transparent #4A4A4A transparent;
-}
+```
 
 **Работа с изображениями в NextJS**
 Используя встроенный в NextJS компонет <Image> помимо параметров 'className', в <Image> можно также передавать и опциональные логические пропсы - Optional Props. Ниже будет пример одно из таких пропсов - fill.
@@ -68,7 +85,7 @@ OR
 </div>
 .parent {
   position: relative; /* Обязательно нужно указывать или display или position, чтобы картинке было на что опереться */
-  display: flex; /* object-fit ниже может не отработать если не указать - display: flex в родителе */
+  display: flex; /* object-fit в .parent img может не отработать если не указать - display: flex в родителе */
   width: 875px;
   height: 213px;
   margin-bottom: 40px;
@@ -79,17 +96,13 @@ OR
 }
 ```
 
-**Примеры параметров грида**
-grid-template-columns: repeat(4, 246px);
-grid-template-columns: 246px 246px 246px 246px;
-
-**Нужно не забывать что если мы используем absolute, то наш фон становиться прозрачным!** И может сложиться ощущуние, что какой бы порядок z-index мы не задаем, елементы все равно видимы. Но это потому что забыв поставить background-color, прозрачные елементы накладываються друг на друга так, как будто они всегда находяться на одном слое
+**Нужно не забывать что если мы используем absolute, то наш фон становиться прозрачным!** 
+И в некоторых случаях может сложиться ощущуние, будто какой бы порядок z-index мы не задаем, елементы все равно видимы будто бы поочередность их слоев не меняется. Но это потому что забыв поставить background-color, прозрачные елементы накладываються друг на друга так, как будто они всегда находяться на одном слое
+```
 position: absolute;
 z-index: 0;
-background-color: white;
-
-**Вложенный css**
-Если например у нас есть елементы разной вложености и каждый из них имеет `<p>` как дочерний елемент. То используя .style p {} мы будем таргетить все `<p>` елементы, а не только на одну вложеность вниз. И при попытке менять `<p>` елементы отдельно на кажной вложености (.style-child1 p {}, .style-child1 p {} ...), у нас будут криво работать стили. Поэтому задавая стили через вложенные елементы нужно быть аккуратным
+background-color: white; /* Не забывать указывать для "position: absolute" */
+```
 
 # 1. Buttons.
 A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). 
@@ -207,6 +220,11 @@ export const robotoLight = Roboto({
 Это потому что в CSS, margin всегда накладывается друг на друга а не суммируется. И всегда отображается тот что больше
 
 # 5. CSS Grid
+
+**Примеры задания параметров грида**
+grid-template-columns: repeat(4, 246px);
+grid-template-columns: 246px 246px 246px 246px;
+
 Проблема со стандартным 'display: inline-block;' в том, что в таком случае елементы к которому он применен имеют неточности в позиционировании: даже при 0й марже все равно остаються небольшие отступы вокруг елемента
 Причина этого - если в нашем коде мы отделяем наши теги пробелом или новой строкой `'<div>.....<div>'`, то эти пробелы отображаются как екстра отступы в нашем UI
 И если мы поставим эти два тега вплотную `'<div><div>'`, то эти отступы пропадут. Но для нас код станет менее читабельным
