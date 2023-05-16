@@ -396,4 +396,4 @@ const Layout = ({ children }) => {
 ***Conditional CSS rendering***
 <div className={`main-burger-display ${isBurgerOpen ? "" : 'main-burger-hidden'}`} />
 
-MAIN BRANCH MODIFIED
+MAIN BRANCH MODIFIED 1
