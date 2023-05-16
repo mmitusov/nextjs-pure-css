@@ -395,3 +395,5 @@ const Layout = ({ children }) => {
 ```
 ***Conditional CSS rendering***
 <div className={`main-burger-display ${isBurgerOpen ? "" : 'main-burger-hidden'}`} />
+
+INITIAL VALUE
