@@ -17,6 +17,7 @@ function Header() {
 			<Link href='/youtubeCopyBasics5'>YouTube Copy Basics 5</Link>
 			<Link href='/youtubeCopyBasics6'>YouTube Copy Basics 6</Link>
 			<Link href='/youtubeCopyBasics7'>YouTube Copy Basics 7</Link>
+			<Link href='/sassLearning1'>SASS Learning 1</Link>
 		</div>
 	);
 }
