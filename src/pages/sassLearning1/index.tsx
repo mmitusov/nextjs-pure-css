@@ -1,6 +1,8 @@
+import sass1 from '@/styles/sassLearning1.module.scss'
+
 const SaasLearninig1 = () => {
     return (
-        <div>
+        <div className={`${sass1.container}`}>
             Hello
         </div>
     );

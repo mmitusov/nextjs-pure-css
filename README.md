@@ -2,7 +2,7 @@
 
 То как применять центровку елемента к самому себе
 ```
-align-self: flex-start/start/end/center/stretch; (родитель должен быть 'display: flex;')
+align-self: flex-start/end/center/stretch; (родитель должен быть 'display: flex;')
 OR margin-top: auto;
 ```
 
@@ -35,6 +35,62 @@ OR
 ```
 aspect-ratio: 16 / 9;
 width: 50%
+```
+
+# SASS
+***Variables***
+```
+$backgroundColor: blue;
+.container {
+    background-color: $backgroundColor;
+}
+```
+
+***Nesting***
+```
+header button:hover {
+    //Styles
+}
+header {
+    button {
+        &:hover {
+            //Styles
+        }
+    }
+}
+```
+
+***Code separation***
+Используя SASS мы можем разделять стили по разным файлам и в итоге объеденять их вместе путем импортирования их в один общий файл:
+`@import "./styles";`
+P.S. Чтобы импортировать файлы, внутри файлов не нужно применять синтаксис по экспорту слитей внутри них.
+
+***Mixins***
+Миксины помогают нам создавать переиспользуемые стили. Они работают словно функции в JS: мы создаем функцию с часто используемой и нужной нам логикой, после чего мы можем многократно использовать эту функцию где угодно в нашем коде и сохраниять его DRY. Вместо того чтобы дублировать один и тот же код в разных местах. 
+Мы создаем миксин - @mixin. И вызываем его где нужно при помощи - @include <mixin_name>.
+При чем мы можем создавать миксины в одном файле, а использовать их в другом. И для этого нам даже не нужно и спользовать импорт или экспорт синтаксис. За нас все делает SASS.
+```
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.component {
+    @include flexCenter();
+}
+```
+
+Также миксины можно делать динамическими и более гибкими. Мы можем передавать в них параметры, и отрисовывать стиль согласно переданному нами параметру. Сам параметр должен быть указан в виде SASS переменной. Параметру мы можем давать любое имя какое нам нравиться. Словно в обычной JS функции.
+Пример:
+```
+@mixin flexCenter($direction, $backgroundColor) {
+    display: flex;
+    flex-direction: $direction;
+    background-color: $backgroundColor;
+}
+.component {
+    @include flexCenter(column, blue);
+}
 ```
 
 # Нужно знать:
@@ -109,6 +165,22 @@ position: absolute;
 z-index: 0;
 background-color: white; /* Не забывать указывать для "position: absolute" */
 ```
+
+***Transform***
+The "transform" CSS property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.
+
+Стандартный синтаксис для Transform - это:
+transform: translate(120px, 50%);
+transform: scale(2, 0.5);
+translate() - перемещает элемент с его начальной точки. Функция принимает два параметра — один для перемещения по оси X, второй — по оси Y.
+
+Но в новой версии CSS уже не обязательно использовать ключевое слово Transform. Теперь свойста можно писать отдельно и они будут работать так-же. Например:
+translate: 120px, 50%;
+scale: 2, 0.5;
+
+Единственные свйства которые мы пока не может записывать отдельно - это skew и perspective. Их все еще нужно указывать через Transform.
+
+P.S. Я не могу анимировать CSS переменные??? Нужно будет проверить.
 
 # 1. Buttons.
 A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). 
