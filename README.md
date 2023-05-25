@@ -79,6 +79,10 @@ A partial - is a Sass file named with a leading underscore like: `_partial.scss`
 
 P.S. Чтобы импортировать файлы, то внутри самих импортируемых файлов не нужно применять синтаксис по экспорту слитей этого файла.
 
+P.S.S.
+Чтобы импортировать сразу несколько елементов можно просто перечислить их через кому:
+@import "config", "main", "home", "menu", "about";
+
 ***Mixins***
 Миксины помогают нам создавать переиспользуемые стили. Они работают словно функции в JS: мы создаем функцию с часто используемой и нужной нам логикой, после чего мы можем многократно использовать эту функцию где угодно в нашем коде и сохраниять его DRY. Вместо того чтобы дублировать один и тот же код в разных местах. 
 Мы создаем миксин - `@mixin`. И вызываем его где нужно при помощи - `@include <mixin_name>`.
@@ -609,3 +613,13 @@ filter: brightness(1);
 
 ***Conditional CSS rendering***
 <div className={`main-burger-display ${isBurgerOpen ? "" : 'main-burger-hidden'}`} />
+
+***CSS BEM naming convention***
+BEM – block, element, modifier. Это один из способов разделять и организовывать стили в CSS, который придумали в Яндекс.
+.block {} - represents the higher level of an abstraction or component.
+.block__element {} - represents a descendent of .block that helps form .block as a whole.
+.block--modifier {} - represents a different state or version of .block.
+
+Double Underscore is used to define sub element of a block.
+This is done because some people might name their block like this main_nav which will create confusion with single underscore like this : main_nav_item
+Therefore double underscore will clarify stuff like this: main_nav__item.

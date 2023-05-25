@@ -11,9 +11,9 @@ const SaasLearninig1 = () => {
                 className={`${sass1.burgerBtn} ${isBurgerOpen ? sass1.burgerOpen : ''}`}
                 onClick={() => setIsBurgerOpen(!isBurgerOpen)}
             >
-                <span className={`${isBurgerOpen ? sass1.span1 : ''}`}/>
-                <span className={`${isBurgerOpen ? sass1.span2 : ''}`}/>
-                <span className={`${isBurgerOpen ? sass1.span3 : ''}`}/>
+                <span />
+                <span />
+                <span />
             </button>
         </div>
     );

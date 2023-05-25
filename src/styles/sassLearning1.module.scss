@@ -29,6 +29,8 @@
     }
 
     span {
+        position: absolute;
+        top: 50%;
         display: flex;
         width: 35px;
         height: 3px;
@@ -38,15 +40,17 @@
 }
 
 .burgerOpen {
-    gap: 0;
-}
-
-.span1 {
-    transform: rotate(45deg);
-}
-.span2 {
-    visibility: hidden;
-}
-.span3 {
-    transform: rotate(-45deg);
+    span {
+        &:nth-child(1) {
+            transform: rotate(45deg);
+            transform-origin: center center;
+        }
+        &:nth-child(2) {
+            opacity: 0;
+        }
+        &:nth-child(3) {
+            transform: rotate(-45deg);
+            transform-origin: center center;
+        }
+    }
 }
