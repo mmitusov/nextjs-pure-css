@@ -1,4 +1,9 @@
 # Часто используемые стили:
+appearance: none;
+display: none;
+opacity: 0;
+display: flex; ~ width: max-content;
+.hamburgerBtn:has(>input:checked)::before {}
 
 То как применять центровку елемента к самому себе
 ```
