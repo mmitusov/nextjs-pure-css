@@ -11,12 +11,32 @@ const SaasLearninig1 = () => {
                 className={`${sass1.burgerBtn} ${isBurgerOpen ? sass1.burgerOpen : ''}`}
                 onClick={() => setIsBurgerOpen(!isBurgerOpen)}
             >
-                <span />
-                <span />
-                <span />
+                <span className='hamburgerSpan'/>
             </button>
         </div>
     );
 }
  
 export default SaasLearninig1;
+
+////Hardcoded solution
+
+// const SaasLearninig1 = () => {
+//     const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+
+//     return (
+//         <div className={`${sass1.container}`}>
+//             <p>Hello</p>
+//             <button 
+//                 className={`${sass1.burgerBtn} ${isBurgerOpen ? sass1.burgerOpen : ''}`}
+//                 onClick={() => setIsBurgerOpen(!isBurgerOpen)}
+//             >
+//                 <span />
+//                 <span />
+//                 <span />
+//             </button>
+//         </div>
+//     );
+// }
+ 
+// export default SaasLearninig1;
