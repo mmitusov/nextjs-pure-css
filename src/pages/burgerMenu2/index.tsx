@@ -1,5 +1,4 @@
-import sass1 from '@/styles/sassLearning1.module.scss'
-import { useState } from 'react';
+import sass1 from '@/styles/burgerMenu2.module.scss'
 
 //Dynamic Humburger solution no JS
 
@@ -47,24 +46,3 @@ const SaasLearninig1 = () => {
 }
  
 export default SaasLearninig1;
-
-////Hardcoded Humburger solution
-// const SaasLearninig1 = () => {
-//     const [isBurgerOpen, setIsBurgerOpen] = useState(false)
-
-//     return (
-//         <div className={`${sass1.container}`}>
-//             <p>Hello</p>
-//             <button 
-//                 className={`${sass1.burgerBtn} ${isBurgerOpen ? sass1.burgerOpen : ''}`}
-//                 onClick={() => setIsBurgerOpen(!isBurgerOpen)}
-//             >
-//                 <span />
-//                 <span />
-//                 <span />
-//             </button>
-//         </div>
-//     );
-// }
- 
-// export default SaasLearninig1;

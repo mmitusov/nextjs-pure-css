@@ -1,0 +1,126 @@
+//Ключевые особенности данной бургер кнопки:
+//1. Мы не задаем предварительный размер кнопки. Ее размер меняется от размера вложенных в нее елементов
+//2. Тут мы используем вариант с 1-м <input type='checkbox'/> и before/after елементами
+//3. <input type='checkbox'/> заменяет нам JS логику
+//4. К каждому вложенному елементу мы обращаемся по отдельности -  &::before, &::after, & > input
+//5. В данном примере мы трансформируем елементы относительно их левого края - transform-origin: left;
+//6. Также, так как мы делаем оффсет по левому краю, то при скрещении длинных елементов под углом в 90deg,
+//длинные части елементов могут выпирать за изначальные пределы родительской коробки
+//По этой причине нам нужно дополнительно еще и подсчитывать на сколько нужно укорачивать елементы, чтобы после скрещения их длинна не выпирала за пределы
+//Новую длину мы подсчитываем исходя из высоты родительского елемента и храним ее значение в - $active-width
+//7. Также из-за transform-origin: left; - после поворота на 45deg, вертикального их выравнивания + укорачивания,
+//елементы будут отцентрованы только вертикально, но в горизонтальной плоскости, они будут находится по левую сторону родительского елемента
+//Так как при повороте и отрезании лишней длинны елементов - справа у нас образовывается пустое пространство, поэтому все выгледет будто мы отцентровали все по левому краю
+//Тут можно либо подвигать елемент вправо, ближе к центру, либо забить на это все
+//8. Так как размер крестика зависит от высоты родителя, то горизонтальное выранивание можно также высчитать из высоты того-же родителя
+//Методом тыка я придумал следующею формулу - $bar-center-horizontaly: $hamburgerBtn-height*0.2; Она подходим для всех комбинаций размера кнопки
+//Как она работает еще не разобрался :)
+//9. Часть особенностей вертикального выравнивания елементов описаны в HTML файле
+
+//P.S. Так как мы высчитываем длину повернутых елементов исходя из высоты родительского елемента, то вне зависимости от изначальной длины елемента,
+//его длина после поворота, всегда будет одинаковой. Длину повернутого елемента можно поменять, только изменыв высоту родительского елемента
+//Такое поведение можно считакть как минусом так и плюсом, в зависимости от ситуации и нужд заказчика
+
+$bar-width: 30px;
+$bar-height: 5px;
+$humbu-gap: 8px;
+$bar-background: #333;
+$hamburgerBtn-height: $bar-height*3 + $humbu-gap*2; //Переменная для подсчета ровного перекрестия крестика 
+$active-width: $hamburgerBtn-height*1.414213562; //Переменная для подсчета ровного перекрестия крестика, умножаем на корень из 2
+$animation-timing: 0.5s;
+$bar-center-horizontaly: $hamburgerBtn-height*0.2;
+
+.container {
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    background-color: gray;
+    z-index: 1;
+}
+
+// ----------> Гамбургер кнопка
+.hamburgerBtn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: $humbu-gap;
+    cursor: pointer;
+    z-index: 10;
+    background-color: white;
+
+    &::before,
+    &::after, 
+    & > input {
+        content: '';
+        width: $bar-width;
+        height: $bar-height;
+        background-color: $bar-background;
+        border-radius: $bar-height;
+        transform-origin: left;
+        transition:
+            // //Играюсь с задержкой анимации. Время что мы указаваем после длительности анимации - это длительность задержки
+            // opacity $animation-timing 0.5s,
+            // width $animation-timing 0.5s,
+            opacity $animation-timing,
+            width $animation-timing,
+            rotate $animation-timing,
+            translate $animation-timing;
+    }
+
+    & > input {
+        appearance: none; // Отключаем дефолтный вид input и превращем ее в обычный div
+        outline: none; // Отключаем outline когда мы наводимся на input через TAB
+        pointer-events: none; //Отключаем возможность кликать/взаимодействовать с input
+    }
+}
+
+.hamburgerBtn > input:checked {
+    opacity: 0;
+    width: 0;
+}
+// //Играюсь с задержкой анимации. Время что мы указаваем после длительности анимации - это длительность задержки
+// .hamburgerBtn:has(>input:checked)::before,
+// .hamburgerBtn:has(>input:checked)::after,
+// .hamburgerBtn > input:checked {
+//     transition: 
+//     opacity $animation-timing,
+//     width $animation-timing,
+//     rotate $animation-timing 0.5s,
+//     translate $animation-timing 0.5s;
+// }
+
+.hamburgerBtn:has(>input:checked)::before {
+    width: $active-width; //Подсчитываем длину, чтобы части крестика влезвали в hamburgerBtn елемент
+    rotate: 45deg;
+    translate: $bar-center-horizontaly $bar-height/-2; //bar-center-horizontaly - Сдвигаем крестик от края кнопки, к ее центру
+}
+.hamburgerBtn:has(>input:checked)::after {
+    width: $active-width; //Подсчитываем длину, чтобы части крестика влезвали в hamburgerBtn елемент
+    rotate: -45deg;
+    translate: $bar-center-horizontaly $bar-height/2; //bar-center-horizontaly - Сдвигаем крестик от края кнопки, к ее центру
+}
+
+// ----------> Гамбургер боковое меню
+.sideBar {
+    width: 100%;
+    max-width: 500px;
+    min-height: 95vh;
+    padding: 20px;
+    padding-top: $hamburgerBtn-height + 30px;
+    background-color: aqua;
+
+    translate: -100%;
+    transition: translate $animation-timing,
+}
+.hamburgerBtn:has(>input:checked) + .sideBar { //Знак "+" означаем что мы вибираем имя класса который идет после hamburgerBtn класса
+    translate: 0;
+}

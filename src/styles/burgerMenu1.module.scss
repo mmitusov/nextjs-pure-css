@@ -1,0 +1,73 @@
+//Hardcoded Humburger solution
+
+//Ключевые особенности данной бургер кнопки:
+//1. Мы предварительно задаем размер кнопки и в нее уже помещаем елементы
+//2. Тут мы используем вариант с 3-ям <span> елементами. Но можно модифицировать и под before/after
+//3. Чтобы обращаться к <span> елементам, мы пользуемся :nth-child() логикой
+//4. В данном примере мы трансформируем елементы относительно их центра - transform-origin: center;
+//5. Благодаря transform-origin: center; - <span> елементы нам нужно выравнивать только по вертикали
+//6. Чтобы при вертикальном выравнивании елементы идиально наложились друг на друга в центре
+//Верхний <span> нам нужно опустить на его собственную высоту + на 1 gap который разделяет его и центр
+//Нижний <span> нам нужно поднять на его собственную высоту + на 1 gap который разделяет его и центр
+//Таким образам, они идиально наложатся поверх центрального span и станут одной линией
+
+//P.S. Так как после поворота елементов их длинна никак не меняется, то размер крестика (Х) всегда будет пропорционально равен длине его елементов
+//Однако елс у нас слишком длинная и при этом не высокая кнопка, то края образовавшегося крестика могут выходить за пределы родительского компонента
+//Такое поведение можно считакть как минусом так и плюсом, в зависимости от ситуации и нужд заказчика
+
+$bar-width: 30px;
+$bar-height: 5px;
+$gap: 8px;
+$bar-vertical-offset: $bar-height + $gap;
+
+.container {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: gray;
+    z-index: 1;
+}
+
+.burgerBtn {
+    all: unset;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+    background-color: white;
+    cursor: pointer;
+    z-index: 2;
+
+    span {
+        display: flex;
+        width: $bar-width;
+        height: $bar-height;
+        background-color: black;
+        transform-origin: center;
+        transition: all 0.5s ease-out;
+    }
+}
+
+.burgerOpen {
+    span {
+        &:nth-child(1) {
+            rotate: 45deg;
+            translate: 0px $bar-vertical-offset;
+        }
+        &:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+        &:nth-child(3) {
+            rotate: -45deg;
+            translate: 0px $bar-vertical-offset*-1;
+        }
+    }
+}

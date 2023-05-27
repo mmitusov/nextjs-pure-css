@@ -4,7 +4,9 @@ display: none;
 opacity: 0;
 display: flex; ~ width: max-content;
 .hamburgerBtn:has(>input:checked)::before {}
-translate: <Y-direction> <X-direction>; === transform: translateX(60px);
+.hamburgerBtn:has(>input:checked) + .sideBar {}
+Знак "+" означаем что мы вибираем имя класса который идет после hamburgerBtn класса
+translate: <Y-direction> <X-direction>; === transform: translateX(); transform: translateY();
 
 То как применять центровку елемента к самому себе
 ```
