@@ -1,3 +1,5 @@
+Примеры кастомных хуков содержаться в папке customHooks
+
 # Часто используемые стили:
 appearance: none;
 display: none;
