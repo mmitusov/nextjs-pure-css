@@ -23,6 +23,7 @@ $bar-vertical-offset: $bar-height + $gap;
 .container {
     position: relative;
     display: flex;
+    align-items: center;
     height: 50px;
     width: 100%;
     background-color: gray;

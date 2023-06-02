@@ -1,4 +1,5 @@
 Описание работы кастомных хуков содержаться в папке customHooks/useLocalStorage
+Пример применения реактовских хуков находиться в src/pages/burgerMenu1/index
 
 # Часто используемые стили:
 appearance: none;
