@@ -19,6 +19,7 @@ function Header() {
 			<Link href='/youtubeCopyBasics7'>YouTube Copy Basics 7</Link>
 			<Link href='/burgerMenu1'>Burger Menu classic</Link>
 			<Link href='/burgerMenu2'>Burger Menu no JS</Link>
+			<Link href='/newWebFeatures'>New Web Features</Link>
 		</div>
 	);
 }

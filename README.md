@@ -1,6 +1,6 @@
 Описание работы кастомных хуков содержаться в папке customHooks/useLocalStorage
 Пример применения реактовских хуков находиться в src/pages/burgerMenu1/index
-
+ 
 # Часто используемые стили:
 appearance: none;
 display: none;
@@ -646,3 +646,15 @@ Therefore double underscore will clarify stuff like this: main_nav__item.
 ::before {
     content: '';
 }
+
+***CSS nesting***
+В последней версии, класический CSS получил поддержку CSS nesting-га, такого же как и в SASS.
+
+***Color fonts/ Cromatic fonts***
+Недавно в шрифты добавили возможность, применять к ним градиентные цвета. Сейчас есть только несколь шрифтов которые это поддерживают, но их количество растет.
+
+***initial-letter CSS***
+The initial-letter CSS property sets styling for dropped, raised, and sunken initial letters.
+
+***Новые CSS units для мобильных устройств***
+lvh и svh - новые юниты для мобильных устройств
