@@ -20,11 +20,13 @@ OR margin-top: auto;
 Чтобы сделать компонет динамически масштабируемым без использования паддингов
 ```
 display: flex;
-width: 100%;
+width: 100%; / flex:1;
 max-width: 528px;
   OR
-flex:1;
-max-width: 528px;
+flex: 1 0 auto;
+  OR
+width: 100%;
+flex-grow: 1;
 ```
 
 Блюр
@@ -50,6 +52,9 @@ OR
 aspect-ratio: 16 / 9;
 width: 50%
 ```
+
+Чтобы при боковом скроле мы примагничивались к следующему компоненту:
+`scroll-snap-type: x mandatory;`
 
 # SASS
 ***Variables***
@@ -270,26 +275,6 @@ button {
   object-position: top;
   width: 100px; - can use for setting up aspect ratio
   height: calc(100px - 50px); - can use for setting up aspect ratio
-```
-
-**Работа с изображениями в NextJS**
-Используя встроенный в NextJS компонет <Image> помимо параметров 'className', в <Image> можно также передавать и опциональные логические пропсы - Optional Props. Ниже будет пример одно из таких пропсов - fill.
-Чтобы воспользоваться параметром object-fit в NextJS, внутри <Image> нужно также обязательно указать параметр 'fill'. Иначе object-fit работать не будет
-```
-<div className={`${aboutUsStyles.test}`}>
-    <Image src={aboutUs1} alt='' fill/> /*Обязательно нужно указать fill*/
-</div>
-.parent {
-  position: relative; /* Обязательно нужно указывать или display или position, чтобы картинке было на что опереться */
-  display: flex; /* object-fit в .parent img может не отработать если не указать - display: flex в родителе */
-  width: 875px;
-  height: 213px;
-  margin-bottom: 40px;
-}
-.parent img {
-  object-fit: cover;
-  overflow: hidden;
-}
 ```
 
 **Нужно не забывать что если мы используем absolute, то наш фон становиться прозрачным!** 
@@ -544,6 +529,44 @@ transition: all 0.3s linear;
 .imgBlock3 {
     transform: translateY(-221px);
 } 
+
+**Работа с изображениями в NextJS**
+Используя встроенный в NextJS компонет <Image> помимо параметров 'className', в <Image> можно также передавать и опциональные логические пропсы - Optional Props. Ниже будет пример одно из таких пропсов - fill.
+Чтобы воспользоваться параметром object-fit в NextJS, внутри <Image> нужно также обязательно указать параметр 'fill'. Иначе object-fit работать не будет
+```
+//Component
+<div>
+    <Image src={ track?.picture } alt='' fill/> 
+</div>
+//Styles
+div {
+    /* В родительском компонент, обязательно нужно указывать position: relative и display: flex/block, чтобы картинке было на что опереться. Иначе картинка не будет отрабатывать. */
+    position: relative; 
+    display: block;
+    width: 80px;
+    height: 80px;
+    & > img {
+        object-fit: cover;
+        overflow: hidden;
+    }
+}
+```
+
+В nextjs, используя <Image />, нельзя "из коробки" использовать ссылки на картинки из интернета. Чтобы иметь такую возможность, нужно сперва сконфигурировать next.config.js файл. If you want to display any images in nextjs app from accross the internet, here is an example of a good config:
+```
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+                port: '',
+                pathname: '**',
+            },
+        ],
+    }
+}
+```
 
 ***Особенности работы с Googl Maps в NextJS***
 ```
