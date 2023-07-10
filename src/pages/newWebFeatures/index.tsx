@@ -1,5 +1,6 @@
 import { useRef } from "react";
 
+//В HTML появился новый тег - <dialog />
 const newWebFeatures = () => {
     const dialogId:any = useRef()
     

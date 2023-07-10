@@ -1,7 +1,31 @@
 Описание работы кастомных хуков содержаться в папке customHooks/useLocalStorage
 Пример применения реактовских хуков находиться в src/pages/burgerMenu1/index
- 
+
 # Часто используемые стили:
+Обнулить стили:
+```
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+```
+
 appearance: none;
 display: none;
 opacity: 0;
@@ -241,13 +265,13 @@ button {
 Нужно разобраться в разнице
 ```
 .container {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    justify-self: center;
-    align-self: center;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-self: center;
+  align-self: center;
 }
 ```
 
