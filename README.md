@@ -80,6 +80,20 @@ width: 50%
 Чтобы при боковом скроле мы примагничивались к следующему компоненту:
 `scroll-snap-type: x mandatory;`
 
+Отыскать первый соответствующий стиль при любой вложености:
+```
+<Card className='rightSide'>
+    <CardContent>
+        <h3>Text</h3>
+    </CardContent>
+</Card>
+.rightSide {
+    & * > h3  {
+        margin-top: 20px;
+    }
+}
+```
+
 # SASS
 ***Variables***
 ```
@@ -122,6 +136,10 @@ P.S. Чтобы импортировать файлы, то внутри сам�
 P.S.S.
 Чтобы импортировать сразу несколько елементов можно просто перечислить их через кому:
 @import "config", "main", "home", "menu", "about";
+
+@import vs. @use
+Fundamentally both rules do the same thing - load members inside another module. The main differences is how they handle members. @import makes everything globally accessible in the target file. This enables an endless chain of imported files where it's difficult to trace where your variables and mixins are coming from. It also allows for overlap and makes it difficult to trace back why your perfect css breaks. This is a problem especially with complex file structures and projects with multiple contributors and global libraries, which is why @import is no longer recommended by Sass.
+@use on the other hand only makes variables, functions, and mixins available within the scope of the current file. It never adds them to the global scope. This makes it easy to figure out where each name your Sass file references comes from, and means you can use shorter names without any risk of collision.
 
 ***Mixins***
 Миксины помогают нам создавать переиспользуемые стили. Они работают словно функции в JS: мы создаем функцию с часто используемой и нужной нам логикой, после чего мы можем многократно использовать эту функцию где угодно в нашем коде и сохраниять его DRY. Вместо того чтобы дублировать один и тот же код в разных местах. 
