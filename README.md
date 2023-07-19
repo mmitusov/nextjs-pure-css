@@ -724,3 +724,61 @@ The initial-letter CSS property sets styling for dropped, raised, and sunken ini
 ***Новые CSS units для мобильных устройств***
 lvh и svh - новые юниты для мобильных устройств
 
+**Building an Autosizing Textarea**
+Например, когда нам нужен  нпут который динамически подстраивается под размер текста. С тегом такой трюк не прокатит `<input/>`, ведь поменять его изначальное поведение, на данный момент никак нельзя. Пооэтому на данный момент есть 2 выхода с этогго положения:
+
+1. Использовать следующий хак. При помощи `contenteditable`, мы можем давать базовым тегам функционал инпута. That <span> will naturally grow to be the width it needs to be for the content it contains. If it was a <div> or any other element that is block-level, it would also expand vertically as needed.
+
+```
+<span 
+    className={`${InputStyles.inputContainer}`} 
+    role="textbox" 
+    contenteditable="true"
+>
+        Input text
+</span>
+```
+
+Но у этого способо есть свои недостатки:
+- What about the fact that forms can be submitted with the Enter key?
+- What about the idea that form data is often serialized and sent along, while the code that’s doing it probably isn’t looking for a span?
+- Does it actually read the same as an input in a screen reader?
+- What other things¹ do inputs naturally do that I’m not thinking of?
+
+2. Построить свой кастомный хук. Хоть `<input/>` и не может дать нам желательный функционал, но `<textarea/>` может. И при помощи кастомного хука мы можем заставить его работать нужным нам способом. Назовем хук - useAutosizeTextArea.
+
+```
+//React component
+const [input, setInput] = useState('')
+const textAreaRef = useRef<HTMLTextAreaElement>(null);
+useAutosizeTextArea(textAreaRef.current, input)
+function onInputChange (text) {
+  setInput(text)
+}
+
+<textarea 
+    ref={textAreaRef}
+    placeholder={`Let's translate...`}
+    value={input}
+    rows={1}
+    onChange={(e) => onInputChange(e.target.value)}
+/>
+
+//CSS
+& > textarea {
+    resize: none;
+    overflow: hidden;
+    line-height: 1;
+    outline: none;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: black;
+    font-size: 20px;
+
+    &:focus {
+        border: 2px solid lightblue;
+    }
+}
+```
+Link - https://medium.com/@oherterich/creating-a-textarea-with-dynamic-height-using-react-and-typescript-5ed2d78d9848
