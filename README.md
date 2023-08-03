@@ -7,7 +7,7 @@
 * {
   padding: 0;
   margin: 0;
-  border: 0;
+  border: 0; //может сломать border стиль tailwind
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -578,7 +578,7 @@ transition: all 0.3s linear;
 ```
 //Component
 <div>
-    <Image src={ track?.picture } alt='' fill/> 
+    <Image src={ track?.picture } alt='' objectFit='contain' fill/> 
 </div>
 //Styles
 div {
@@ -588,7 +588,7 @@ div {
     width: 80px;
     height: 80px;
     & > img {
-        object-fit: cover;
+        object-fit: cover; //Или можно указать напрямую в <Image />
         overflow: hidden;
     }
 }
