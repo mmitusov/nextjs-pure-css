@@ -578,7 +578,7 @@ transition: all 0.3s linear;
 ```
 //Component
 <div>
-    <Image src={ track?.picture } alt='' objectFit='contain' fill/> 
+    <Image src={ track?.picture } alt='' style={{objectFit:"cover"}} fill/> 
 </div>
 //Styles
 div {
