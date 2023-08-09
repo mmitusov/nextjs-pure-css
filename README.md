@@ -35,6 +35,15 @@ display: flex; ~ width: max-content;
 Знак "+" означаем что мы вибираем имя класса который идет после hamburgerBtn класса
 translate: <Y-direction> <X-direction>; === transform: translateX(); transform: translateY();
 
+How to Truncate Text with CSS. То есть, отображать троеточие, если текст не помещается в контейнер.
+```
+text_truncate {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+```
+
 То как применять центровку елемента к самому себе
 ```
 align-self: flex-start/end/center/stretch; (родитель должен быть 'display: flex;')
