@@ -5,6 +5,7 @@
 // https://medium.com/@pryvalov.bogddan/react-chat-widget-with-document-picture-in-picture-socket-io-f92d615bd4f8
 // https://hackernoon.com/how-to-document-picture-in-picture-in-react-with-typescript
 // https://developer.chrome.com/docs/web-platform/document-picture-in-picture?hl=ru
+// https://w3c.github.io/picture-in-picture/#example-add-custom-pip-button
 "use client"
 import { useEffect, useState, ReactNode } from 'react';
 
