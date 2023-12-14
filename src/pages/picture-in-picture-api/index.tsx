@@ -1,6 +1,10 @@
 // Есть несколько нюансов о которых нужно знать когда работаешь с PiP.
 // 1. PiP работает только по HTTPS. Тоесть в режиме разработки нужно либо использовать тунели, либо же Next 14 уже имеет встроенную поддержку HTTPS
 // 2. Чтобы запустить Next 14 в режиме HTTPS в package.json нужно указать скрипт: "dev": "next dev --experimental-https"
+// Полезные ссылки
+// https://medium.com/@pryvalov.bogddan/react-chat-widget-with-document-picture-in-picture-socket-io-f92d615bd4f8
+// https://hackernoon.com/how-to-document-picture-in-picture-in-react-with-typescript
+// https://developer.chrome.com/docs/web-platform/document-picture-in-picture?hl=ru
 "use client"
 import { useEffect, useState, ReactNode } from 'react';
 
