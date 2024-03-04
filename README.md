@@ -44,7 +44,7 @@ text_truncate {
   text-overflow:ellipsis;
 }
 ```
-Когда мы хотим truncate (многострочный текст)[https://www.freecodecamp.org/news/how-to-truncate-text-with-css-javascript/]:   
+Когда мы хотим truncate [многострочный текст](https://www.freecodecamp.org/news/how-to-truncate-text-with-css-javascript/):   
 ```
 .truncate-overflow1 {
   -webkit-line-clamp: 3; /* Number of lines to show before truncating */
