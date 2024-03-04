@@ -35,12 +35,32 @@ display: flex; ~ width: max-content;
 Знак "+" означаем что мы вибираем имя класса который идет после hamburgerBtn класса
 translate: <Y-direction> <X-direction>; === transform: translateX(); transform: translateY();
 
-How to Truncate Text with CSS. То есть, отображать троеточие, если текст не помещается в контейнер.
+How to Truncate Text with CSS. То есть, отображать троеточие, если текст не помещается в контейнер.  
+Когда текст - это лишь одна строка:  
 ```
 text_truncate {
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+}
+```
+Когда мы хотим truncate (многострочный текст)[https://www.freecodecamp.org/news/how-to-truncate-text-with-css-javascript/]:   
+```
+.truncate-overflow1 {
+  -webkit-line-clamp: 3; /* Number of lines to show before truncating */
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+Или
+.truncate-overflow2 {
+  --max-lines: 3;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--max-lines);
+  -webkit-box-orient: vertical;
+  max-height: calc(1.2em * var(--max-lines)); /* Assuming line-height is 1.2em */
+  position: relative;
+  overflow: hidden;
 }
 ```
 
