@@ -59,7 +59,6 @@ text_truncate {
   -webkit-line-clamp: var(--max-lines);
   -webkit-box-orient: vertical;
   max-height: calc(1.2em * var(--max-lines)); /* Assuming line-height is 1.2em */
-  position: relative;
   overflow: hidden;
 }
 ```
